@@ -1,9 +1,11 @@
- No<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Veronicaa Persis // 18th Birthday ✨</title>
+
   <style>
     * {
       box-sizing: border-box;
@@ -13,8 +15,19 @@
       -webkit-tap-highlight-color: transparent;
     }
 
+    html,
     body {
-      background: radial-gradient(circle at 50% 20%, #e9d5ff 0%, #d8b4fe 45%, #ffd1dc 90%);
+      min-height: 100%;
+    }
+
+    body {
+      background:
+        radial-gradient(
+          circle at 50% 20%,
+          #e9d5ff 0%,
+          #d8b4fe 45%,
+          #ffd1dc 90%
+        );
       min-height: 100vh;
       display: flex;
       justify-content: center;
@@ -23,18 +36,24 @@
       transition: background 1s ease;
     }
 
+    button {
+      font-family: inherit;
+    }
+
     .wrapper {
       width: 100%;
       max-width: 480px;
     }
 
     .main-card {
+      width: 100%;
       background: #ffffff;
       border-radius: 28px;
       padding: 34px 24px;
       box-shadow: 0 20px 45px rgba(107, 33, 168, 0.18);
       border: 3px solid rgba(255, 255, 255, 0.95);
       text-align: center;
+      overflow: hidden;
     }
 
     .badge {
@@ -62,7 +81,10 @@
       margin-bottom: 20px;
     }
 
-    /* Act 1: Pokemon Arena */
+    /* =========================
+       ACT 1 — POKEMON
+    ========================= */
+
     .battle-box {
       display: flex;
       justify-content: space-around;
@@ -79,6 +101,7 @@
       flex-direction: column;
       align-items: center;
       gap: 6px;
+      min-width: 100px;
     }
 
     .poke-avatar {
@@ -87,8 +110,13 @@
     }
 
     @keyframes floatHop {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(-8px); }
+      0% {
+        transform: translateY(0);
+      }
+
+      100% {
+        transform: translateY(-8px);
+      }
     }
 
     .poke-label {
@@ -97,7 +125,10 @@
       color: #701a75;
     }
 
-    /* Buttons */
+    /* =========================
+       BUTTONS
+    ========================= */
+
     .btn-choice {
       display: block;
       width: 100%;
@@ -111,12 +142,26 @@
       color: #374151;
       text-align: left;
       cursor: pointer;
-      transition: background 0.15s, border-color 0.15s;
+      transition:
+        background 0.15s ease,
+        border-color 0.15s ease,
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .btn-choice:hover {
+      background: #fff7fb;
+      border-color: #f472b6;
+      transform: translateY(-1px);
+      box-shadow: 0 5px 12px rgba(236, 72, 153, 0.12);
     }
 
     .btn-choice:active {
       background: #fff0f3;
       border-color: #ff4d6d;
+      transform: scale(0.985);
     }
 
     .btn-forward {
@@ -132,7 +177,25 @@
       cursor: pointer;
       margin-top: 14px;
       box-shadow: 0 8px 20px rgba(255, 77, 109, 0.35);
+      transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+      appearance: none;
+      -webkit-appearance: none;
     }
+
+    .btn-forward:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(255, 77, 109, 0.42);
+    }
+
+    .btn-forward:active {
+      transform: scale(0.985);
+    }
+
+    /* =========================
+       ROAST
+    ========================= */
 
     .roast-callout {
       background: #fff1f2;
@@ -143,16 +206,37 @@
       text-align: left;
     }
 
-    /* Act Switching */
+    /* =========================
+       ACT SWITCHING
+    ========================= */
+
     .act-panel {
       display: none;
+      opacity: 0;
+      transform: translateY(8px);
     }
 
     .act-panel.active {
       display: block;
+      animation: panelIn 0.4s ease forwards;
     }
 
-    /* Tangled Lantern Animation */
+    @keyframes panelIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* =========================
+       TANGLED LANTERNS
+    ========================= */
+
     .lantern-cluster {
       display: flex;
       justify-content: center;
@@ -163,154 +247,742 @@
     }
 
     @keyframes lanternGlow {
-      0% { transform: scale(1); filter: drop-shadow(0 0 4px #ffbe0b); }
-      100% { transform: scale(1.1); filter: drop-shadow(0 0 16px #ffbe0b); }
+      0% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 4px #ffbe0b);
+      }
+
+      100% {
+        transform: scale(1.1);
+        filter: drop-shadow(0 0 16px #ffbe0b);
+      }
+    }
+
+    /* =========================
+       SMALL SCREEN
+    ========================= */
+
+    @media (max-width: 380px) {
+      body {
+        padding: 12px 10px;
+      }
+
+      .main-card {
+        padding: 26px 17px;
+        border-radius: 24px;
+      }
+
+      h2 {
+        font-size: 20px;
+      }
+
+      .battle-box {
+        padding: 12px 8px;
+      }
+
+      .poke-avatar {
+        font-size: 42px;
+      }
+
+      .poke-label {
+        font-size: 11px;
+      }
     }
   </style>
 </head>
+
 <body>
 
-<div class="wrapper">
-  <div class="main-card">
+  <div class="wrapper">
 
-    <div id="act1" class="act-panel active">
-      <span class="badge" style="background:#fee2e2; color:#dc2626;">ACT 1 // BATTLE COMMENCE ⚡</span>
-      <h2>Trainer Veronicaa Persis!</h2>
-      <p>Team Rocket jumped out of nowhere to steal Pikachu! You reached for your Pokéball and summoned your starter partner: <b>Shorty</b>.</p>
+    <div class="main-card">
 
-      <div class="battle-box">
-        <div class="poke-unit">
-          <div class="poke-avatar">🐣</div>
-          <span class="poke-label">Shorty (Lvl 18)</span>
-        </div>
-        <div style="font-size:22px; font-weight:900; color:#db2777;">VS</div>
-        <div class="poke-unit">
-          <div class="poke-avatar">⚡</div>
-          <span class="poke-label" style="color:#d97706;">Pikachu (Save Him!)</span>
-        </div>
-      </div>
+      <!-- ==================================================
+           ACT 1
+      ================================================== -->
 
-      <button class="btn-choice" onclick="finishAct1('Shorty screamed at 10,000 decibels! Team Rocket got an immediate headache and fled!')">
-        🍼 Use Shorty's Baby Tantrum Cry
-      </button>
-      <button class="btn-choice" onclick="finishAct1('Shorty tripped over its own feet and bumped Team Rocket into orbit!')">
-        🥊 Order Shorty to Tackle Team Rocket
-      </button>
-      <button class="btn-choice" onclick="finishAct1('You scolded Team Rocket non-stop for 4 minutes straight until they surrendered Pikachu!')">
-        🗣️ Rescue Pikachu with Veronicaa's Yap Attack
-      </button>
+      <section id="act1" class="act-panel active">
 
-      <div id="act1-result"></div>
-    </div>
-
-    <div id="act2" class="act-panel">
-      <span class="badge" style="background:#fef3c7; color:#d97706;">ACT 2 // SHINCHAN'S INQUISITION 🐶</span>
-      <div style="font-size:52px; margin: 8px 0; animation: floatHop 1.2s infinite alternate;">🕺</div>
-      <h2>Shinchan asks: 'Arrey Veronicaa didi! Why are you turning 18 today?'</h2>
-      <p>Pick your answer:</p>
-
-      <button class="btn-choice" onclick="showRoast('Didi, you only turned 18 so you can eat two cakes at once and complain about back pain!')">
-        😇 To finally become mature & responsible
-      </button>
-      <button class="btn-choice" onclick="showRoast('Wrong! Nature forced you to grow up, but your mental age is still stuck on cartoon network!')">
-        🌸 Because nature forced me to grow up
-      </button>
-      <button class="btn-choice" onclick="showRoast('Nice try! You already boss everyone around 24/7, turning 18 changed nothing!')">
-        👑 So I can legally boss everyone around
-      </button>
-      <button class="btn-choice" style="border:2px solid #ec4899; background:#fdf2f8;" onclick="switchAct(3)">
-        🤷‍♀️ "I don't know / IDK" (Click Here to Escape)
-      </button>
-
-      <div id="act2-roast"></div>
-    </div>
-
-    <div id="act3" class="act-panel">
-      <span class="badge" style="background:#fef3c7; color:#b45309;">ACT 3 // KINGDOM OF CORONA ☀️</span>
-      
-      <div class="lantern-cluster">🏮 ✨ 🏮 ✨ 🏮</div>
-      
-      <div style="font-size:46px; margin: 10px 0;">🛶🌸</div>
-
-      <h2 style="color:#b45309; font-size:24px;">At Last You See The Light</h2>
-      <p style="color:#4b5563;">
-        Flynn steers the gondola into the horizon. Rapunzel looks straight at you, smiles, and shouts:<br><br>
-        <span style="font-size:22px; font-weight:800; color:#e11d48; display:block; margin: 8px 0;">
-          "YAPPIE BIRTHDAY VERONICAA ANI! ✨"
+        <span
+          class="badge"
+          style="background:#fee2e2; color:#dc2626;"
+        >
+          ACT 1 // BATTLE COMMENCE ⚡
         </span>
-        All the lanterns in the sky are floating for your 18th.
-      </p>
 
-      <button class="btn-forward" style="background:linear-gradient(135deg, #f59e0b, #ec4899);" onclick="switchAct(4)">
-        Open Veronicaa's Birthday Letter 💖
-      </button>
-    </div>
+        <h2>Trainer Veronicaa Persis!</h2>
 
-    <div id="act4" class="act-panel">
-      <span class="badge" style="background:#ffe4e6; color:#e11d48;">ACT 4 // THE TRUTH 👑💖</span>
-      <div style="font-size:48px; margin-bottom:10px;">🧚‍♀️🎀✨</div>
-      <h2 style="color:#be123c;">Happy 18th, Veronicaa Persis!</h2>
-
-      <div style="text-align:left; font-size:14px; line-height:1.75; color:#374151; background:#ffffff; padding:18px; border-radius:18px; border:2px solid #fbcfe8; margin: 16px 0;">
-        Dear Veronicaa,<br><br>
-        You are officially 18! Look around—we actually survived each other.<br><br>
-        We both know we don't fight that much anymore... mostly because I am busy <b>eating your brain 24/7</b>, and you somehow have the patience of a saint to still deal with me after every single headache I give you. 🧠🍴<br><br>
-        Through all the inside jokes, the endless rants, the goofy nicknames, and every single moment—thank you for being my constant. I genuinely hope this 18th chapter brings you everything you've ever wished for under those Tangled lanterns.<br><br>
-        You are truly one of one, Veronicaa. Never change.
-      </div>
-
-      <div style="background:#fffbeb; border:2px dashed #f59e0b; border-radius:16px; padding:15px; text-align:left;">
-        <h4 style="color:#b45309; font-size:13.5px; font-weight:800;">🎟️ OFFICIAL LIFETIME CLAIM CONTRACT</h4>
-        <p style="font-size:12.5px; color:#4b5563; margin-top:5px; line-height:1.5;">
-          <b>Holder:</b> Veronicaa Persis<br>
-          <b>Terms:</b> Entitles you to yell at me whenever I eat your brain too much, plus 1 free iced coffee / comfort snack whenever you demand it. Legally valid forever!
+        <p>
+          Team Rocket jumped out of nowhere to steal Pikachu!
+          You reached for your Pokéball and summoned your starter partner:
+          <b>Shorty</b>.
         </p>
-      </div>
 
-      <button class="btn-forward" onclick="switchAct(1)">
-        Replay The Whole Show ↺
-      </button>
+        <div class="battle-box">
+
+          <div class="poke-unit">
+
+            <div class="poke-avatar">
+              🐣
+            </div>
+
+            <span class="poke-label">
+              Shorty (Lvl 18)
+            </span>
+
+          </div>
+
+          <div
+            style="
+              font-size:22px;
+              font-weight:900;
+              color:#db2777;
+            "
+          >
+            VS
+          </div>
+
+          <div class="poke-unit">
+
+            <div class="poke-avatar">
+              ⚡
+            </div>
+
+            <span
+              class="poke-label"
+              style="color:#d97706;"
+            >
+              Pikachu (Save Him!)
+            </span>
+
+          </div>
+
+        </div>
+
+        <button
+          type="button"
+          class="btn-choice"
+          data-action="battle"
+          data-message="Shorty screamed at 10,000 decibels! Team Rocket got an immediate headache and fled!"
+        >
+          🍼 Use Shorty's Baby Tantrum Cry
+        </button>
+
+        <button
+          type="button"
+          class="btn-choice"
+          data-action="battle"
+          data-message="Shorty tripped over its own feet and bumped Team Rocket into orbit!"
+        >
+          🥊 Order Shorty to Tackle Team Rocket
+        </button>
+
+        <button
+          type="button"
+          class="btn-choice"
+          data-action="battle"
+          data-message="You scolded Team Rocket non-stop for 4 minutes straight until they surrendered Pikachu!"
+        >
+          🗣️ Rescue Pikachu with Veronicaa's Yap Attack
+        </button>
+
+        <div id="act1-result"></div>
+
+      </section>
+
+
+      <!-- ==================================================
+           ACT 2
+      ================================================== -->
+
+      <section id="act2" class="act-panel">
+
+        <span
+          class="badge"
+          style="background:#fef3c7; color:#d97706;"
+        >
+          ACT 2 // SHINCHAN'S INQUISITION 🐶
+        </span>
+
+        <div
+          style="
+            font-size:52px;
+            margin:8px 0;
+            animation:floatHop 1.2s infinite alternate;
+          "
+        >
+          🕺
+        </div>
+
+        <h2>
+          Shinchan asks:
+          'Arrey Veronicaa didi! Why are you turning 18 today?'
+        </h2>
+
+        <p>
+          Pick your answer:
+        </p>
+
+        <button
+          type="button"
+          class="btn-choice"
+          data-action="roast"
+          data-message="Didi, you only turned 18 so you can eat two cakes at once and complain about back pain!"
+        >
+          😇 To finally become mature & responsible
+        </button>
+
+        <button
+          type="button"
+          class="btn-choice"
+          data-action="roast"
+          data-message="Wrong! Nature forced you to grow up, but your mental age is still stuck on cartoon network!"
+        >
+          🌸 Because nature forced me to grow up
+        </button>
+
+        <button
+          type="button"
+          class="btn-choice"
+          data-action="roast"
+          data-message="Nice try! You already boss everyone around 24/7, turning 18 changed nothing!"
+        >
+          👑 So I can legally boss everyone around
+        </button>
+
+        <button
+          type="button"
+          class="btn-choice"
+          id="escape-button"
+          style="
+            border:2px solid #ec4899;
+            background:#fdf2f8;
+          "
+        >
+          🤷‍♀️ "I don't know / IDK" (Click Here to Escape)
+        </button>
+
+        <div id="act2-roast"></div>
+
+      </section>
+
+
+      <!-- ==================================================
+           ACT 3
+      ================================================== -->
+
+      <section id="act3" class="act-panel">
+
+        <span
+          class="badge"
+          style="background:#fef3c7; color:#b45309;"
+        >
+          ACT 3 // KINGDOM OF CORONA ☀️
+        </span>
+
+        <div class="lantern-cluster">
+          🏮 ✨ 🏮 ✨ 🏮
+        </div>
+
+        <div
+          style="
+            font-size:46px;
+            margin:10px 0;
+          "
+        >
+          🛶🌸
+        </div>
+
+        <h2
+          style="
+            color:#b45309;
+            font-size:24px;
+          "
+        >
+          At Last You See The Light
+        </h2>
+
+        <p style="color:#4b5563;">
+
+          Flynn steers the gondola into the horizon.
+          Rapunzel looks straight at you, smiles, and shouts:
+
+          <br><br>
+
+          <span
+            style="
+              font-size:22px;
+              font-weight:800;
+              color:#e11d48;
+              display:block;
+              margin:8px 0;
+            "
+          >
+            "YAPPIE BIRTHDAY VERONICAA ANI! ✨"
+          </span>
+
+          All the lanterns in the sky are floating for your 18th.
+
+        </p>
+
+        <button
+          type="button"
+          class="btn-forward"
+          id="birthday-letter-button"
+          style="
+            background:
+              linear-gradient(
+                135deg,
+                #f59e0b,
+                #ec4899
+              );
+          "
+        >
+          Open Veronicaa's Birthday Letter 💖
+        </button>
+
+      </section>
+
+
+      <!-- ==================================================
+           ACT 4
+      ================================================== -->
+
+      <section id="act4" class="act-panel">
+
+        <span
+          class="badge"
+          style="
+            background:#ffe4e6;
+            color:#e11d48;
+          "
+        >
+          ACT 4 // THE TRUTH 👑💖
+        </span>
+
+        <div
+          style="
+            font-size:48px;
+            margin-bottom:10px;
+          "
+        >
+          🧚‍♀️🎀✨
+        </div>
+
+        <h2
+          style="color:#be123c;"
+        >
+          Happy 18th, Veronicaa Persis!
+        </h2>
+
+        <div
+          style="
+            text-align:left;
+            font-size:14px;
+            line-height:1.75;
+            color:#374151;
+            background:#ffffff;
+            padding:18px;
+            border-radius:18px;
+            border:2px solid #fbcfe8;
+            margin:16px 0;
+          "
+        >
+
+          Dear Veronicaa,
+
+          <br><br>
+
+          You are officially 18!
+          Look around—we actually survived each other.
+
+          <br><br>
+
+          We both know we don't fight that much anymore...
+          mostly because I am busy
+          <b>eating your brain 24/7</b>,
+          and you somehow have the patience of a saint
+          to still deal with me after every single headache
+          I give you. 🧠🍴
+
+          <br><br>
+
+          Through all the inside jokes, the endless rants,
+          the goofy nicknames, and every single moment—
+          thank you for being my constant.
+
+          I genuinely hope this 18th chapter brings you
+          everything you've ever wished for under those
+          Tangled lanterns.
+
+          <br><br>
+
+          You are truly one of one, Veronicaa.
+          Never change.
+
+        </div>
+
+        <div
+          style="
+            background:#fffbeb;
+            border:2px dashed #f59e0b;
+            border-radius:16px;
+            padding:15px;
+            text-align:left;
+          "
+        >
+
+          <h4
+            style="
+              color:#b45309;
+              font-size:13.5px;
+              font-weight:800;
+            "
+          >
+            🎟️ OFFICIAL LIFETIME CLAIM CONTRACT
+          </h4>
+
+          <p
+            style="
+              font-size:12.5px;
+              color:#4b5563;
+              margin-top:5px;
+              line-height:1.5;
+            "
+          >
+
+            <b>Holder:</b>
+            Veronicaa Persis
+
+            <br>
+
+            <b>Terms:</b>
+            Entitles you to yell at me whenever I eat your brain too much,
+            plus 1 free iced coffee / comfort snack whenever you demand it.
+            Legally valid forever!
+
+          </p>
+
+        </div>
+
+        <button
+          type="button"
+          class="btn-forward"
+          id="replay-button"
+        >
+          Replay The Whole Show ↺
+        </button>
+
+      </section>
+
     </div>
 
   </div>
-</div>
 
-<script>
-  function switchAct(actNum) {
-    document.querySelectorAll('.act-panel').forEach(function(panel) {
-      panel.classList.remove('active');
-    });
 
-    var target = document.getElementById('act' + actNum);
-    if (target) {
-      target.classList.add('active');
+  <!-- ====================================================
+       JAVASCRIPT
+  ==================================================== -->
+
+  <script>
+
+    "use strict";
+
+
+    /* -----------------------------------------------
+       GLOBAL STATE
+    ------------------------------------------------ */
+
+    let currentAct = 1;
+
+
+    /* -----------------------------------------------
+       GET ACT
+    ------------------------------------------------ */
+
+    function getAct(actNumber) {
+
+      return document.getElementById(
+        "act" + actNumber
+      );
+
     }
 
-    if (actNum === 3) {
-      document.body.style.background = "#1e1035";
-    } else {
-      document.body.style.background = "radial-gradient(circle at 50% 20%, #e9d5ff, #d8b4fe 45%, #ffd1dc 90%)";
+
+    /* -----------------------------------------------
+       SWITCH ACT
+    ------------------------------------------------ */
+
+    function switchAct(actNumber) {
+
+      const panels =
+        document.querySelectorAll(".act-panel");
+
+      const target =
+        getAct(actNumber);
+
+      if (!target) {
+        console.error(
+          "Could not find act:",
+          actNumber
+        );
+        return;
+      }
+
+
+      /* Hide every act */
+
+      panels.forEach(function(panel) {
+
+        panel.classList.remove("active");
+
+      });
+
+
+      /* Show selected act */
+
+      target.classList.add("active");
+
+      currentAct = actNumber;
+
+
+      /* Background */
+
+      if (actNumber === 3) {
+
+        document.body.style.background =
+          "#1e1035";
+
+      } else {
+
+        document.body.style.background =
+          "radial-gradient(circle at 50% 20%, #e9d5ff 0%, #d8b4fe 45%, #ffd1dc 90%)";
+
+      }
+
+
+      /* Scroll to top */
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
     }
-  }
 
-  function finishAct1(msg) {
-    document.getElementById('act1-result').innerHTML = 
-      '<div class="roast-callout" style="background:#f3e8ff; border-color:#a855f7;">' +
-        '<h4 style="color:#7e22ce; font-size:14px; margin-bottom:4px;">Victory! Pikachu is safe.</h4>' +
-        '<p style="font-size:13px; color:#4b5563;">' + msg + '</p>' +
-      '</div>' +
-      '<button class="btn-forward" onclick="switchAct(2)">Enter Shinchan\'s Realm ➔</button>';
-  }
 
-  function showRoast(quote) {
-    document.getElementById('act2-roast').innerHTML = 
-      '<div class="roast-callout">' +
-        '<p style="font-size:13.5px; color:#e11d48; font-weight:700;">❌ WRONG ANSWER!</p>' +
-        '<p style="font-size:13px; color:#374151; margin-top:4px;">Shinchan says: "' + quote + '"</p>' +
-        '<p style="font-size:12px; color:#6b7280; margin-top:6px;">Hint: Tap "I don\'t know / IDK" to continue!</p>' +
-      '</div>';
-  }
-</script>
+    /* -----------------------------------------------
+       ACT 1
+    ------------------------------------------------ */
 
-</body>
-</html>
+    function finishAct1(message) {
+
+      const result =
+        document.getElementById("act1-result");
+
+      if (!result) {
+        return;
+      }
+
+
+      result.innerHTML = "";
+
+
+      const box =
+        document.createElement("div");
+
+      box.className = "roast-callout";
+
+      box.style.background = "#f3e8ff";
+      box.style.borderColor = "#a855f7";
+
+
+      const heading =
+        document.createElement("h4");
+
+      heading.textContent =
+        "Victory! Pikachu is safe.";
+
+      heading.style.color = "#7e22ce";
+      heading.style.fontSize = "14px";
+      heading.style.marginBottom = "4px";
+
+
+      const paragraph =
+        document.createElement("p");
+
+      paragraph.textContent =
+        message;
+
+      paragraph.style.fontSize = "13px";
+      paragraph.style.color = "#4b5563";
+
+
+      box.appendChild(heading);
+      box.appendChild(paragraph);
+
+
+      const nextButton =
+        document.createElement("button");
+
+      nextButton.type = "button";
+      nextButton.className = "btn-forward";
+
+      nextButton.textContent =
+        "Enter Shinchan's Realm ➔";
+
+
+      nextButton.addEventListener(
+        "click",
+        function() {
+
+          switchAct(2);
+
+        }
+      );
+
+
+      result.appendChild(box);
+      result.appendChild(nextButton);
+
+    }
+
+
+    /* -----------------------------------------------
+       ACT 2
+    ------------------------------------------------ */
+
+    function showRoast(quote) {
+
+      const roast =
+        document.getElementById("act2-roast");
+
+      if (!roast) {
+        return;
+      }
+
+
+      roast.innerHTML = "";
+
+
+      const box =
+        document.createElement("div");
+
+      box.className =
+        "roast-callout";
+
+
+      const wrong =
+        document.createElement("p");
+
+      wrong.textContent =
+        "❌ WRONG ANSWER!";
+
+      wrong.style.fontSize =
+        "13.5px";
+
+      wrong.style.color =
+        "#e11d48";
+
+      wrong.style.fontWeight =
+        "700";
+
+
+      const message =
+        document.createElement("p");
+
+      message.textContent =
+        'Shinchan says: "' +
+        quote +
+        '"';
+
+      message.style.fontSize =
+        "13px";
+
+      message.style.color =
+        "#374151";
+
+      message.style.marginTop =
+        "4px";
+
+
+      const hint =
+        document.createElement("p");
+
+      hint.textContent =
+        'Hint: Tap "I don\'t know / IDK" to continue!';
+
+      hint.style.fontSize =
+        "12px";
+
+      hint.style.color =
+        "#6b7280";
+
+      hint.style.marginTop =
+        "6px";
+
+
+      box.appendChild(wrong);
+      box.appendChild(message);
+      box.appendChild(hint);
+
+
+      roast.appendChild(box);
+
+    }
+
+
+    /* -----------------------------------------------
+       RESET ACT 1
+    ------------------------------------------------ */
+
+    function resetAct1() {
+
+      const result =
+        document.getElementById(
+          "act1-result"
+        );
+
+      if (result) {
+        result.innerHTML = "";
+      }
+
+    }
+
+
+    /* -----------------------------------------------
+       RESET ACT 2
+    ------------------------------------------------ */
+
+    function resetAct2() {
+
+      const roast =
+        document.getElementById(
+          "act2-roast"
+        );
+
+      if (roast) {
+        roast.innerHTML = "";
+      }
+
+    }
+
+
+    /* -----------------------------------------------
+       RESET EVERYTHING
+    ------------------------------------------------ */
+
+    function resetShow() {
+
+      resetAct1();
+      resetAct2();
+
+      currentAct = 1;
+
+      document.body.style.background =
+        "radial-gradient(circle at 50% 20%, #e9d5ff 0%, #d8b4fe 45%, #ffd1dc 90%)";
+
+    }
+
+
+    /* ----------
