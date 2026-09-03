@@ -2,18 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Veronicaa Persis // 18th Milestone ✨</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Veronicaa Persis // The 18th Multiverse Odyssey ✨🎀</title>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Playfair+Display:ital,wght@1,600;1,800&family=Quicksand:wght@600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600;1,800;1,900&family=Quicksand:wght@600;700&display=swap');
 
     :root {
-      --lavender: #eedffd;
+      --lavender: #f3e8ff;
       --lavender-dark: #6b21a8;
-      --pink: #ff6b8b;
+      --pink: #ff4d6d;
+      --purple: #8338ec;
       --gold: #ffbe0b;
-      --card-bg: rgba(255, 255, 255, 0.94);
+      --tangled-night: #0a0314;
+      --card-glass: rgba(255, 255, 255, 0.94);
     }
 
     * {
@@ -26,19 +28,19 @@
     }
 
     body {
-      background: radial-gradient(circle at 50% 20%, #e9d5ff, #d8b4fe 45%, #ffd1dc 90%);
+      background: radial-gradient(circle at 50% 20%, #e9d5ff 0%, #c4b5fd 45%, #ffd1dc 90%);
       min-height: 100vh;
+      overflow-x: hidden;
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 24px 16px;
+      transition: background 1.5s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
-      overflow-x: hidden;
-      transition: background 1.2s ease;
     }
 
-    /* Ambient Floating Stickers */
-    .stickers-board {
+    /* Ambient Magic Floating Elements */
+    .magic-drift-board {
       position: fixed;
       inset: 0;
       pointer-events: none;
@@ -46,147 +48,216 @@
       overflow: hidden;
     }
 
-    .charm {
+    .drift-symbol {
       position: absolute;
-      font-size: 34px;
-      opacity: 0.85;
-      animation: floatCharm 6s infinite ease-in-out alternate;
+      font-size: 30px;
+      opacity: 0.75;
+      animation: driftAnim 7s infinite ease-in-out alternate;
     }
 
-    @keyframes floatCharm {
-      0% { transform: translateY(0) rotate(0deg); }
-      100% { transform: translateY(-30px) rotate(18deg) scale(1.15); }
+    @keyframes driftAnim {
+      0% { transform: translateY(0) rotate(0deg) scale(1); }
+      100% { transform: translateY(-35px) rotate(22deg) scale(1.15); }
     }
 
-    /* Spacious Center Stage */
-    .viewport {
+    /* Tangled 3D Canvas Canvas */
+    #lantern-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 2;
+      opacity: 0;
+      transition: opacity 2s ease;
+    }
+
+    /* Viewport Architecture */
+    .app-viewport {
       position: relative;
       z-index: 10;
       width: 100%;
-      max-width: 650px;
+      max-width: 680px;
     }
 
-    .main-card {
-      background: var(--card-bg);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
+    .grand-card {
+      background: var(--card-glass);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
       border: 4px solid rgba(255, 255, 255, 0.95);
       border-radius: 40px;
-      padding: 40px 32px;
-      min-height: 520px;
-      box-shadow: 0 30px 70px rgba(107, 33, 168, 0.22);
+      padding: 42px 34px;
+      min-height: 580px;
+      box-shadow: 0 35px 80px rgba(107, 33, 168, 0.22);
       text-align: center;
       display: flex;
       flex-direction: column;
       justify-content: center;
       position: relative;
-      transition: all 0.5s ease;
+      transition: all 0.6s ease;
     }
 
-    .badge {
-      display: inline-block;
+    .act-tag {
+      display: inline-flex;
       align-self: center;
-      font-size: 12px;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
       font-weight: 700;
       letter-spacing: 1.5px;
       text-transform: uppercase;
-      padding: 8px 18px;
+      padding: 7px 18px;
       border-radius: 50px;
       margin-bottom: 16px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     }
 
-    h2.title {
-      font-size: 26px;
+    h1.hero-title {
+      font-size: 28px;
       font-weight: 700;
       color: #2b0938;
       line-height: 1.35;
       margin-bottom: 12px;
+      letter-spacing: -0.3px;
     }
 
-    p.subtitle {
+    p.hero-desc {
       font-size: 15px;
       line-height: 1.7;
       color: #495057;
-      margin-bottom: 22px;
-      max-width: 520px;
+      margin-bottom: 24px;
+      max-width: 540px;
       margin-left: auto;
       margin-right: auto;
     }
 
-    /* Spacious Character Stage */
-    .char-stage {
+    /* ================= POKEMON BATTLE ENGINE ================= */
+    .battle-arena {
+      background: linear-gradient(180deg, #dcfce7 0%, #bbf7d0 100%);
+      border: 3px solid #86efac;
+      border-radius: 30px;
+      padding: 24px 20px;
+      margin-bottom: 22px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .arena-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .fighter-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .fighter-svg-wrap {
+      width: 130px;
+      height: 130px;
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 36px;
-      margin: 18px 0 24px 0;
-      background: #ffffff;
-      border-radius: 28px;
-      padding: 24px;
-      border: 3px solid #ecd6ff;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.15));
+      animation: fighterIdle 2s infinite alternate ease-in-out;
     }
 
-    .char-figure {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .char-img {
-      height: 125px;
-      object-fit: contain;
-      animation: charBob 2.2s infinite ease-in-out alternate;
-    }
-
-    @keyframes charBob {
+    @keyframes fighterIdle {
       0% { transform: translateY(0); }
-      100% { transform: translateY(-12px); }
+      100% { transform: translateY(-8px); }
     }
 
-    .char-label {
-      font-size: 13px;
+    .shake-attack {
+      animation: attackTremor 0.35s ease !important;
+    }
+
+    @keyframes attackTremor {
+      0%, 100% { transform: translateX(0); }
+      20% { transform: translateX(-14px); }
+      40% { transform: translateX(14px); }
+      60% { transform: translateX(-8px); }
+      80% { transform: translateX(8px); }
+    }
+
+    .hp-bar-box {
+      background: #ffffff;
+      border: 2px solid #374151;
+      border-radius: 14px;
+      padding: 8px 14px;
+      width: 170px;
+      text-align: left;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+    }
+
+    .hp-label {
+      font-size: 11px;
       font-weight: 700;
-      color: #6b21a8;
+      color: #374151;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 4px;
     }
 
-    /* Options */
-    .options-grid {
-      display: flex;
-      flex-direction: column;
+    .hp-track {
+      width: 100%;
+      height: 8px;
+      background: #e5e7eb;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .hp-progress {
+      height: 100%;
+      background: #22c55e;
+      border-radius: 10px;
+      transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Options / Battle Moves */
+    .controls-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: 12px;
       margin-bottom: 16px;
-      width: 100%;
     }
 
-    .btn-opt {
-      width: 100%;
+    @media (max-width: 580px) {
+      .controls-grid { grid-template-columns: 1fr; }
+      .fighter-svg-wrap { width: 95px; height: 95px; }
+      .hp-bar-box { width: 130px; }
+    }
+
+    .btn-command {
       background: #ffffff;
-      border: 2.5px solid #e9d5ff;
+      border: 2.5px solid #ecd6ff;
       border-radius: 20px;
-      padding: 16px 20px;
-      font-size: 15px;
+      padding: 16px 18px;
+      font-size: 14px;
       font-weight: 600;
-      color: #343a40;
+      color: #374151;
       cursor: pointer;
       text-align: left;
-      transition: all 0.22s ease;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
       display: flex;
       justify-content: space-between;
       align-items: center;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
     }
 
-    .btn-opt:hover {
+    .btn-command:hover {
       transform: translateY(-2px);
       border-color: var(--pink);
-      background: #fffbfa;
+      background: #fff5f7;
     }
 
-    .action-btn {
+    .cta-button {
       width: 100%;
-      background: linear-gradient(135deg, var(--pink), var(--lavender-dark));
+      background: linear-gradient(135deg, var(--pink), var(--purple));
       color: white;
       border: none;
       border-radius: 24px;
@@ -194,204 +265,314 @@
       font-size: 16px;
       font-weight: 700;
       cursor: pointer;
-      box-shadow: 0 12px 28px rgba(255, 107, 139, 0.35);
-      transition: all 0.2s ease;
+      box-shadow: 0 12px 30px rgba(255, 77, 109, 0.35);
+      transition: all 0.25s ease;
       margin-top: 10px;
     }
 
-    .action-btn:hover {
+    .cta-button:hover {
       transform: scale(1.02);
-      box-shadow: 0 15px 35px rgba(255, 107, 139, 0.5);
+      box-shadow: 0 15px 40px rgba(255, 77, 109, 0.55);
     }
 
-    .roast-reveal {
+    /* ================= SHINCHAN STAGE ================= */
+    .shinchan-anim-container {
+      width: 160px;
+      height: 160px;
+      margin: 10px auto 16px auto;
+      filter: drop-shadow(0 10px 20px rgba(255, 107, 107, 0.25));
+    }
+
+    .roast-balloon {
       background: #fff0f3;
-      border: 2.5px dashed #ff4d6d;
-      border-radius: 20px;
-      padding: 18px;
+      border: 2.5px dashed var(--pink);
+      border-radius: 24px;
+      padding: 18px 22px;
       margin: 16px 0;
       text-align: left;
-      animation: popIn 0.3s ease;
+      animation: popBounce 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    @keyframes popIn {
-      from { transform: scale(0.96); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
+    @keyframes popBounce {
+      0% { transform: scale(0.9); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
     }
 
-    .coupon-card {
+    /* ================= TANGLED STAGE ================= */
+    .tangled-boat-wrapper {
+      width: 220px;
+      height: 140px;
+      margin: 10px auto;
+      animation: boatFloat 3.5s infinite ease-in-out alternate;
+    }
+
+    @keyframes boatFloat {
+      0% { transform: translateY(0) rotate(-1deg); }
+      100% { transform: translateY(-10px) rotate(1.5deg); }
+    }
+
+    .quote-glow {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 800;
+      font-style: italic;
+      color: #ffbe0b;
+      text-shadow: 0 0 25px rgba(255, 190, 11, 0.7);
+      margin: 14px 0;
+      display: block;
+    }
+
+    /* ================= ACT 4 CERTIFICATE ================= */
+    .letter-parchment {
       background: #ffffff;
-      border: 2.5px dashed var(--pink);
-      border-radius: 22px;
-      padding: 18px;
-      margin-top: 18px;
+      border: 3px solid #ffd1dc;
+      border-radius: 28px;
+      padding: 26px;
       text-align: left;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
+      margin: 20px 0;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+      line-height: 1.85;
+      font-size: 15px;
+      color: #374151;
     }
 
-    .fade-anim {
+    .contract-gold {
+      background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+      border: 2.5px dashed #d97706;
+      border-radius: 22px;
+      padding: 20px;
+      text-align: left;
+      margin-top: 18px;
+    }
+
+    .fade-stage {
       animation: stageFade 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
     @keyframes stageFade {
-      from { opacity: 0; transform: translateY(14px) scale(0.98); }
+      from { opacity: 0; transform: translateY(16px) scale(0.98); }
       to { opacity: 1; transform: translateY(0) scale(1); }
     }
   </style>
 </head>
 <body>
 
-  <div class="stickers-board">
-    <div class="charm" style="top: 8%; left: 8%;">🎀</div>
-    <div class="charm" style="top: 14%; right: 9%; animation-delay: -2s;">⚡</div>
-    <div class="charm" style="top: 48%; left: 5%; animation-delay: -3.5s;">🕺</div>
-    <div class="charm" style="top: 70%; right: 7%; animation-delay: -1.5s;">🐞</div>
-    <div class="charm" style="bottom: 10%; left: 8%; animation-delay: -4s;">🧚‍♀️</div>
+  <div class="magic-drift-board">
+    <div class="drift-symbol" style="top: 6%; left: 6%;">🎀</div>
+    <div class="drift-symbol" style="top: 14%; right: 8%; animation-delay: -2s;">⚡</div>
+    <div class="drift-symbol" style="top: 48%; left: 4%; animation-delay: -3.5s;">🕺</div>
+    <div class="drift-symbol" style="top: 70%; right: 6%; animation-delay: -1.5s;">🐞</div>
+    <div class="drift-symbol" style="bottom: 8%; left: 8%; animation-delay: -4s;">🧚‍♀️</div>
   </div>
 
-  <div class="viewport">
-    <div class="main-card" id="card-shell">
-      <div id="screen" class="fade-anim"></div>
+  <canvas id="lantern-canvas"></canvas>
+
+  <div class="app-viewport">
+    <div class="grand-card" id="card-shell">
+      <div id="screen" class="fade-stage"></div>
     </div>
   </div>
 
   <script>
+    // ================= SOUND SYNTHESIZER =================
+    const AudioSynthesizer = {
+      ctx: null,
+      init() {
+        if (!this.ctx) {
+          const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+          if (AudioContextClass) this.ctx = new AudioContextClass();
+        }
+        if (this.ctx && this.ctx.state === 'suspended') {
+          this.ctx.resume();
+        }
+      },
+      playTone(freq, type = 'sine', duration = 0.1, gainVal = 0.15) {
+        try {
+          this.init();
+          if (!this.ctx) return;
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = type;
+          osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
+          gain.gain.setValueAtTime(gainVal, this.ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + duration);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start();
+          osc.stop(this.ctx.currentTime + duration);
+        } catch(e) {}
+      },
+      attackSound() {
+        this.playTone(180, 'square', 0.15, 0.2);
+      },
+      buzzer() {
+        this.playTone(150, 'sawtooth', 0.25, 0.25);
+      },
+      sparkle() {
+        [523.25, 659.25, 783.99, 1046.50].forEach((freq, idx) => {
+          setTimeout(() => this.playTone(freq, 'triangle', 0.35, 0.18), idx * 80);
+        });
+      },
+      tangledChimes() {
+        const melody = [392, 440, 493.88, 587.33, 659.25, 783.99, 880];
+        melody.forEach((freq, idx) => {
+          setTimeout(() => this.playTone(freq, 'sine', 0.6, 0.2), idx * 240);
+        });
+      }
+    };
+
+    // ================= VECTOR GRAPHIC ENGINE =================
+    const Graphics = {
+      shortySVG() {
+        return `
+          <svg viewBox="0 0 100 100" width="100%" height="100%">
+            <path d="M 50 15 C 28 15 20 40 20 70 C 20 88 35 95 50 95 C 65 95 80 88 80 70 C 80 40 72 15 50 15 Z" fill="#ffffff" stroke="#374151" stroke-width="3.5" />
+            <polygon points="50,15 42,3 32,18 24,8 20,25" fill="#fef3c7" stroke="#374151" stroke-width="3" />
+            <polygon points="50,15 58,3 68,18 76,8 80,25" fill="#fef3c7" stroke="#374151" stroke-width="3" />
+            <ellipse cx="38" cy="42" rx="3.5" ry="5.5" fill="#1f2937" />
+            <ellipse cx="62" cy="42" rx="3.5" ry="5.5" fill="#1f2937" />
+            <ellipse cx="32" cy="50" rx="4.5" ry="3" fill="#fca5a5" />
+            <ellipse cx="68" cy="50" rx="4.5" ry="3" fill="#fca5a5" />
+            <path d="M 44 52 Q 50 58 56 52" fill="none" stroke="#1f2937" stroke-width="2.5" stroke-linecap="round" />
+            <polygon points="36,70 46,62 44,76" fill="#ef4444" />
+            <polygon points="58,68 66,78 54,82" fill="#3b82f6" />
+            <polygon points="40,82 50,86 42,92" fill="#ef4444" />
+          </svg>
+        `;
+      },
+      pikachuSVG() {
+        return `
+          <svg viewBox="0 0 100 100" width="100%" height="100%">
+            <polygon points="26,38 8,8 22,20" fill="#fbbf24" stroke="#374151" stroke-width="3" />
+            <polygon points="8,8 14,14 18,10" fill="#1f2937" />
+            <polygon points="74,38 92,8 78,20" fill="#fbbf24" stroke="#374151" stroke-width="3" />
+            <polygon points="92,8 86,14 82,10" fill="#1f2937" />
+            <ellipse cx="50" cy="55" rx="32" ry="30" fill="#fbbf24" stroke="#374151" stroke-width="3.5" />
+            <circle cx="38" cy="50" r="4.5" fill="#1f2937" />
+            <circle cx="62" cy="50" r="4.5" fill="#1f2937" />
+            <circle cx="39.5" cy="48.5" r="1.5" fill="#ffffff" />
+            <circle cx="63.5" cy="48.5" r="1.5" fill="#ffffff" />
+            <polygon points="49,57 51,57 50,59" fill="#1f2937" />
+            <path d="M 44 62 Q 50 67 56 62" fill="none" stroke="#1f2937" stroke-width="2.5" stroke-linecap="round" />
+            <circle cx="27" cy="59" r="6" fill="#ef4444" />
+            <circle cx="73" cy="59" r="6" fill="#ef4444" />
+          </svg>
+        `;
+      },
+      teamRocketSVG() {
+        return `
+          <svg viewBox="0 0 100 100" width="100%" height="100%">
+            <path d="M 25 35 C 10 10 30 -5 55 5 C 75 12 85 30 80 45 C 70 40 45 42 25 35 Z" fill="#ec4899" stroke="#374151" stroke-width="3" />
+            <circle cx="45" cy="45" r="18" fill="#fde68a" stroke="#374151" stroke-width="2.5" />
+            <path d="M 38 42 Q 44 38 48 43" fill="none" stroke="#1f2937" stroke-width="2" />
+            <path d="M 40 52 Q 46 48 52 51" fill="none" stroke="#ef4444" stroke-width="2" />
+            <rect x="25" y="62" width="40" height="30" rx="8" fill="#ffffff" stroke="#374151" stroke-width="3" />
+            <text x="39" y="84" font-size="20" font-weight="900" fill="#ef4444" font-family="sans-serif">R</text>
+          </svg>
+        `;
+      },
+      shinchanSVG() {
+        return `
+          <svg viewBox="0 0 120 120" width="100%" height="100%">
+            <path d="M 30 40 C 20 55 20 85 45 92 C 75 98 105 92 105 65 C 105 45 85 30 60 30 C 45 30 35 32 30 40 Z" fill="#fed7aa" stroke="#1f2937" stroke-width="4" />
+            <ellipse cx="48" cy="46" rx="14" ry="4" fill="#1f2937" transform="rotate(-10, 48, 46)" />
+            <ellipse cx="80" cy="44" rx="14" ry="4" fill="#1f2937" transform="rotate(10, 80, 44)" />
+            <circle cx="50" cy="58" r="8" fill="#1f2937" />
+            <circle cx="52" cy="56" r="3" fill="#ffffff" />
+            <circle cx="82" cy="56" r="8" fill="#1f2937" />
+            <circle cx="84" cy="54" r="3" fill="#ffffff" />
+            <ellipse cx="38" cy="74" rx="7" ry="5" fill="#fca5a5" />
+            <path d="M 62 76 Q 70 86 78 76" fill="#f43f5e" stroke="#1f2937" stroke-width="3" />
+            <path d="M 40 92 L 30 115 L 90 115 L 82 92 Z" fill="#ef4444" stroke="#1f2937" stroke-width="3" />
+          </svg>
+        `;
+      },
+      tangledBoatSVG() {
+        return `
+          <svg viewBox="0 0 160 100" width="100%" height="100%">
+            <path d="M 10 65 C 40 90 120 90 150 65 C 158 60 145 75 125 80 C 75 88 35 84 10 65 Z" fill="#78350f" stroke="#451a03" stroke-width="3" />
+            <path d="M 90 40 Q 115 50 110 75" fill="none" stroke="#fbbf24" stroke-width="8" stroke-linecap="round" />
+            <circle cx="88" cy="36" r="9" fill="#fed7aa" />
+            <path d="M 80 45 L 98 45 L 102 70 L 76 70 Z" fill="#c084fc" />
+            <circle cx="55" cy="38" r="9" fill="#fed7aa" />
+            <path d="M 46 47 L 64 47 L 66 70 L 44 70 Z" fill="#0284c7" />
+            <rect x="68" y="48" width="14" height="18" rx="4" fill="#fef08a" stroke="#d97706" stroke-width="1.5" />
+            <circle cx="75" cy="57" r="14" fill="rgba(251, 191, 36, 0.4)" />
+          </svg>
+        `;
+      }
+    };
+
+    // ================= STATE MACHINE & LOGIC =================
     let act = 1;
-    const screen = document.getElementById("screen");
+    let rocketHP = 100;
+    let countdownTimer = null;
+    let lanternLoop = null;
 
-    function renderAct() {
-      screen.className = "fade-anim";
+    const screenContainer = document.getElementById("screen");
 
-      // ================= ACT 1: BIG POKÉMON BATTLE =================
+    function renderStage() {
+      screenContainer.className = "fade-stage";
+
+      // ================= ACT 1: POKÉMON ROUTE 18 =================
       if (act === 1) {
-        document.body.style.background = "radial-gradient(circle at 50% 20%, #e9d5ff, #d8b4fe 45%, #ffd1dc 90%)";
+        document.body.style.background = "radial-gradient(circle at 50% 20%, #e9d5ff 0%, #c4b5fd 45%, #ffd1dc 90%)";
         const card = document.getElementById("card-shell");
         card.style.background = "rgba(255, 255, 255, 0.94)";
         card.style.borderColor = "rgba(255, 255, 255, 0.95)";
+        document.getElementById("lantern-canvas").style.opacity = "0";
 
-        screen.innerHTML = `
-          <div class="badge" style="background:#fee2e2; color:#ef4444;">ACT 1 // POKÉMON ROUTE 18 ⚡</div>
-          <h2 class="title">Trainer Veronicaa Persis!</h2>
-          <p class="subtitle">Team Rocket jumped out of nowhere to steal Pikachu! You reached for your Pokéball and sent out your starter partner: <b>Shorty</b>.</p>
+        screenContainer.innerHTML = `
+          <div class="act-tag" style="background:#fee2e2; color:#ef4444;">ACT 1 // BATTLE COMMENCE ⚡</div>
+          <h1 class="hero-title">Trainer Veronicaa Persis!</h1>
+          <p class="hero-desc">Team Rocket jumped out of nowhere to steal Pikachu! You reached for your Pokéball and summoned your companion: <b>Shorty</b>.</p>
           
-          <div class="char-stage">
-            <div class="char-figure">
-              <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/175.gif" class="char-img" alt="Shorty" />
-              <span class="char-label">Shorty (Lvl 18)</span>
+          <div class="battle-arena">
+            <div class="arena-row">
+              <div class="fighter-card">
+                <div class="hp-bar-box">
+                  <div class="hp-label"><span>SHORTY (LVL 18)</span><span>HP 100%</span></div>
+                  <div class="hp-track"><div class="hp-progress" style="width: 100%;"></div></div>
+                </div>
+                <div class="fighter-svg-wrap" id="shorty-sprite">${Graphics.shortySVG()}</div>
+              </div>
+
+              <div class="fighter-card">
+                <div class="hp-bar-box">
+                  <div class="hp-label"><span>TEAM ROCKET</span><span id="rocket-hp-label">HP ${rocketHP}%</span></div>
+                  <div class="hp-track"><div class="hp-progress" id="rocket-hp-bar" style="width: ${rocketHP}%; background:#ef4444;"></div></div>
+                </div>
+                <div class="fighter-svg-wrap" id="rocket-sprite">${Graphics.teamRocketSVG()}</div>
+              </div>
             </div>
-            <div style="font-size:28px; font-weight:bold; color:#ff4d6d;">VS</div>
-            <div class="char-figure">
-              <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/25.gif" class="char-img" alt="Pikachu" />
-              <span class="char-label" style="color:#d97706;">Pikachu (Save Him!)</span>
-            </div>
+            <div style="font-size:12px; font-weight:700; color:#15803d; letter-spacing:0.5px;">⚡ PIKACHU IS TRAPPED IN THE CAGE! CHOOSE A MOVE:</div>
           </div>
 
-          <div class="options-grid">
-            <button class="btn-opt" onclick="runMove(1)"><span>🍼 Use Shorty's High-Pitch Baby Tantrum</span><span>➔</span></button>
-            <button class="btn-opt" onclick="runMove(2)"><span>🥊 Order Shorty to Tackle Team Rocket</span><span>➔</span></button>
-            <button class="btn-opt" onclick="runMove(3)"><span>🗣️ Rescue Pikachu with Veronicaa's Non-Stop Yap Attack</span><span>➔</span></button>
+          <div class="controls-grid">
+            <button class="btn-command" onclick="executeMove(1)">
+              <span>🍼 Shorty's High-Pitch Tantrum</span>
+              <span>➔</span>
+            </button>
+            <button class="btn-command" onclick="executeMove(2)">
+              <span>🥊 Order Shorty to Tackle</span>
+              <span>➔</span>
+            </button>
+            <button class="btn-command" onclick="executeMove(3)">
+              <span>🗣️ Scold Them with Veronicaa's Yap</span>
+              <span>➔</span>
+            </button>
+            <button class="btn-command" onclick="executeMove(4)">
+              <span>✨ Use 18th Birthday Magic Spell</span>
+              <span>➔</span>
+            </button>
           </div>
-          <div id="poke-result"></div>
+          <div id="battle-console"></div>
         `;
       }
 
-      // ================= ACT 2: SHINCHAN =================
+      // ================= ACT 2: SHINCHAN'S INTERROGATION =================
       else if (act === 2) {
-        screen.innerHTML = `
-          <div class="badge" style="background:#fef3c7; color:#d97706;">ACT 2 // SHINCHAN'S INTERROGATION 🐶</div>
-          <div style="font-size:75px; margin: 10px 0;">🕺</div>
-          <h2 class="title">Shinchan asks: 'Arrey Veronicaa didi! Why are you turning 18 today?'</h2>
-          <p class="subtitle">Pick an answer. Let's see if you can outsmart Shinchan...</p>
-
-          <div class="options-grid">
-            <button class="btn-opt" onclick="showRoast('Didi, you only turned 18 so you can eat two cakes at once and complain about back pain!')">
-              <span>To finally become mature & responsible 😇</span>
-            </button>
-            <button class="btn-opt" onclick="showRoast('Wrong! Nature forced you to grow up, but your brain is still stuck in cartoon network!')">
-              <span>Because nature forced me to grow up 🌸</span>
-            </button>
-            <button class="btn-opt" onclick="showRoast('Nice try! You already boss everyone around 24/7, turning 18 changed nothing!')">
-              <span>So I can legally boss everyone around 👑</span>
-            </button>
-            <button class="btn-opt" style="border: 2.5px solid #ff70a6; background:#fff0f5;" onclick="act=3; renderAct();">
-              <span>🤷‍♀️ "I don't know / IDK" (Click Here to Escape)</span>
-            </button>
-          </div>
-          <div id="roast-box"></div>
-        `;
-      }
-
-      // ================= ACT 3: TANGLED LANTERN SKY =================
-      else if (act === 3) {
-        document.body.style.background = "radial-gradient(circle at 50% 30%, #1a0933 0%, #08031a 70%, #02000d 100%)";
-        const card = document.getElementById("card-shell");
-        card.style.background = "rgba(18, 10, 35, 0.88)";
-        card.style.borderColor = "rgba(255, 190, 11, 0.4)";
-
-        confetti({ particleCount: 70, spread: 80, origin: { y: 0.6 } });
-
-        screen.innerHTML = `
-          <div class="badge" style="background:rgba(255,190,11,0.2); color:#ffbe0b;">ACT 3 // KINGDOM OF CORONA ☀️</div>
-          <div style="font-size:75px; margin: 12px 0;">🛶🏮✨</div>
-          <h2 class="title" style="color:#ffbe0b; font-size:28px;">At Last You See The Light</h2>
-          <p class="subtitle" style="color:#e9d5ff; font-size:16px;">
-            Flynn steers the boat, Rapunzel looks straight at you and smiles:<br><br>
-            <span style="font-size:24px; font-weight:700; color:#ffd166; font-family:'Playfair Display',serif; display:inline-block;">
-              "YAPPIE BIRTHDAY VERONICAA ANI! ✨"
-            </span><br><br>
-            A whole new world has opened just for you. All the lanterns in the sky are floating for your 18th.
-          </p>
+        screenContainer.innerHTML = `
+          <div class="act-tag" style="background:#fef3c7; color:#d97706;">ACT 2 // SHINCHAN'S INQUISITION 🐶</div>
           
-          <button class="action-btn" style="background: linear-gradient(135deg, #ffbe0b, #ff70a6); color:#1a0933; font-weight:bold;" onclick="act=4; renderAct();">
-            Open Veronicaa's Birthday Letter 💖
-          </button>
-        `;
-      }
-
-      // ================= ACT 4: LETTER & BRAIN-EATING TRUCE =================
-      else if (act === 4) {
-        document.body.style.background = "radial-gradient(circle at 50% 20%, #e9d5ff, #d8b4fe 45%, #ffd1dc 90%)";
-        const card = document.getElementById("card-shell");
-        card.style.background = "rgba(255, 255, 255, 0.95)";
-        card.style.borderColor = "rgba(255, 255, 255, 0.95)";
-
-        confetti({ particleCount: 100, spread: 90, origin: { y: 0.5 } });
-
-        screen.innerHTML = `
-          <div class="badge" style="background:#ffe4e6; color:#e11d48;">ACT 4 // THE TRUTH 👑💖</div>
-          <div style="font-size:55px; margin: 6px 0;">🧚‍♀️🎀✨</div>
-          <h2 class="title" style="color:#be123c; font-size:28px;">Happy 18th, Veronicaa Persis!</h2>
-          
-          <div style="text-align:left; font-size:15px; line-height:1.8; color:#3d344d; margin:20px 0; background:#fff; padding:22px; border-radius:24px; border:2.5px solid #ffd1dc;">
-            Dear Veronicaa,<br><br>
-            You are officially 18! Look around—we actually survived each other.<br><br>
-            We both know we don’t really fight that much anymore... mostly because I am busy <b>eating your brain 24/7</b>, and you somehow have the patience of a saint to still deal with me after every single headache I give you. 🧠🍴<br><br>
-            Through all the inside jokes, the endless rants, the goofy nicknames, and every single moment—thank you for being my constant. I genuinely hope this 18th chapter brings you everything you've ever wished for under those Tangled lanterns.<br><br>
-            You are truly one of one, Veronicaa. Never change.
-          </div>
-
-          <div class="coupon-card">
-            <h4 style="color:#be123c; font-size:15px;">🎟️ OFFICIAL LIFETIME CLAIM CONTRACT</h4>
-            <p style="font-size:13.5px; color:#555; margin-top:6px; line-height:1.6;">
-              <b>Holder:</b> Veronicaa Persis<br>
-              <b>Terms:</b> Entitles you to yell at me whenever I eat your brain too much, plus 1 free iced coffee / comfort snack whenever you demand it. Legally valid forever!
-            </p>
-          </div>
-
-          <button class="action-btn" style="margin-top:20px;" onclick="act=1; renderAct();">
-            Replay The Show ↺
-          </button>
-        `;
-      }
-    }
-
-    function runMove(m) {
-      confetti({ particleCount: 50, spread: 60, origin: { y: 0.7 } });
-      const resp = document.getElementById("poke-result");
-      
-      let msg = "";
-      if (m === 1) msg = "Shorty screamed with 10,000 decibels! Team Rocket got an immediate headache and fled!";
-      if (m === 2) msg = "Shorty charged forward and bumped Team Rocket straight into orbit!";
-      if (m === 3) msg = "You scolded Team Rocket non-stop for 4 straight minutes! They apologized and handed Pikachu back!";
-
-      resp.innerHTML = `
+          <div class="shinchan-anim-container">${Graphics.shin
