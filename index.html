@@ -1,427 +1,360 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>A Celestial Journey ✨</title>
+  <title>A Magical Birthday Quest ✨🎀</title>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Playfair+Display:ital,wght@1,600;1,800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@500;700&display=swap');
 
     :root {
-      --primary: #f43f5e;
-      --gold: #fbbf24;
-      --glow: rgba(244, 63, 94, 0.4);
+      --lavender-bg: #e6dcfa;
+      --card-bg: rgba(255, 255, 255, 0.78);
+      --accent-pink: #ff70a6;
+      --accent-purple: #9d4edd;
+      --ladybug-red: #ff3366;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: 'Fredoka', 'Quicksand', sans-serif;
       -webkit-tap-highlight-color: transparent;
       user-select: none;
     }
 
     body {
-      background: #020208;
+      background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 50%, #fbc2eb 100%);
       min-height: 100vh;
       overflow-x: hidden;
       display: flex;
       justify-content: center;
       align-items: center;
-      color: #fff;
+      padding: 16px;
+      position: relative;
     }
 
-    /* Ambient Dynamic Aurora Background */
-    canvas#galaxy {
+    /* Floating Stickers / Charms */
+    .sticker-layer {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    .aurora {
-      position: fixed;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      filter: blur(140px);
-      opacity: 0.28;
+      width: 100%;
+      height: 100%;
       pointer-events: none;
       z-index: 1;
-      animation: pulseAurora 12s infinite alternate ease-in-out;
-    }
-    .aurora-1 { background: #ec4899; top: -100px; left: -100px; }
-    .aurora-2 { background: #6366f1; bottom: -100px; right: -100px; animation-delay: -6s; }
-
-    @keyframes pulseAurora {
-      0% { transform: scale(1) translate(0, 0); }
-      100% { transform: scale(1.3) translate(60px, 40px); }
+      overflow: hidden;
     }
 
-    /* Ultra Frosted Glass Card */
+    .sticker {
+      position: absolute;
+      font-size: 28px;
+      opacity: 0.85;
+      animation: floatCharm 7s infinite ease-in-out alternate;
+    }
+
+    @keyframes floatCharm {
+      0% { transform: translateY(0px) rotate(0deg) scale(1); }
+      100% { transform: translateY(-30px) rotate(15deg) scale(1.1); }
+    }
+
     .viewport {
       position: relative;
       z-index: 10;
-      width: 92%;
-      max-width: 420px;
-      perspective: 1000px;
-      padding: 10px 0;
+      width: 100%;
+      max-width: 410px;
     }
 
-    .glass-card {
-      background: rgba(18, 18, 28, 0.65);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      backdrop-filter: blur(40px);
-      -webkit-backdrop-filter: blur(40px);
-      border-radius: 32px;
-      padding: 34px 28px;
-      box-shadow: 0 40px 100px -20px rgba(0,0,0,0.8), inset 0 1px 1px rgba(255,255,255,0.2);
+    .cute-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 3px solid rgba(255, 255, 255, 0.8);
+      border-radius: 36px;
+      padding: 30px 24px;
+      box-shadow: 0 20px 45px rgba(157, 78, 221, 0.2), inset 0 2px 5px rgba(255, 255, 255, 0.6);
       text-align: center;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
 
-    /* Shimmer light sweep across card */
-    .glass-card::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(
-        45deg,
-        transparent 45%,
-        rgba(255, 255, 255, 0.06) 50%,
-        transparent 55%
-      );
-      transform: rotate(-25deg);
-      animation: sweep 8s infinite linear;
-      pointer-events: none;
+    .header-icons {
+      font-size: 28px;
+      margin-bottom: 8px;
+      letter-spacing: 4px;
     }
 
-    @keyframes sweep {
-      0% { transform: translateY(-100%) rotate(-25deg); }
-      100% { transform: translateY(100%) rotate(-25deg); }
-    }
-
-    /* Top tracker dots */
     .stepper {
       display: flex;
       justify-content: center;
-      gap: 8px;
-      margin-bottom: 24px;
+      gap: 6px;
+      margin-bottom: 16px;
     }
+
     .dot {
-      width: 8px;
-      height: 8px;
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.15);
-      transition: all 0.4s ease;
+      background: rgba(157, 78, 221, 0.2);
+      transition: all 0.3s ease;
     }
+
     .dot.active {
-      background: var(--gold);
-      box-shadow: 0 0 12px var(--gold);
-      transform: scale(1.3);
-      width: 22px;
+      background: var(--accent-pink);
+      width: 24px;
       border-radius: 12px;
+      box-shadow: 0 0 10px var(--accent-pink);
     }
 
-    .pill-tag {
+    .badge {
       display: inline-block;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
+      font-size: 12px;
       font-weight: 700;
-      color: #cbd5e1;
+      color: #7209b7;
+      background: #f1e4ff;
+      border: 1px dashed #b5179e;
       padding: 6px 14px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 100px;
-      margin-bottom: 18px;
-    }
-
-    h1.serif-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 28px;
-      font-weight: 800;
-      font-style: italic;
-      line-height: 1.25;
+      border-radius: 50px;
       margin-bottom: 14px;
-      background: linear-gradient(135deg, #fff 40%, #fbcfe8 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
     }
 
-    p.subtitle {
-      font-size: 14px;
-      line-height: 1.6;
-      color: #94a3b8;
-      margin-bottom: 26px;
+    h2.title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #3a0ca3;
+      line-height: 1.35;
+      margin-bottom: 20px;
     }
 
-    /* Quiz buttons with glowing hover state */
-    .btn-grid {
+    .options {
       display: flex;
       flex-direction: column;
       gap: 12px;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
-    .interactive-btn {
+    .option-btn {
       width: 100%;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 18px;
-      padding: 16px 20px;
+      background: #ffffff;
+      border: 2px solid #ecd6ff;
+      border-radius: 20px;
+      padding: 15px 18px;
       font-size: 15px;
       font-weight: 600;
-      color: #e2e8f0;
+      color: #4a4e69;
       cursor: pointer;
+      text-align: left;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+      transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      position: relative;
+      align-items: center;
     }
 
-    .interactive-btn:hover {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(255, 255, 255, 0.3);
+    .option-btn:hover {
       transform: translateY(-2px);
+      border-color: #c77dff;
     }
 
-    .interactive-btn.selected {
-      background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+    .option-btn.selected {
+      background: linear-gradient(135deg, #ff70a6, #c77dff);
+      color: white;
       border-color: transparent;
-      box-shadow: 0 10px 30px rgba(236, 72, 153, 0.4);
-      color: #fff;
+      box-shadow: 0 8px 20px rgba(255, 112, 166, 0.35);
     }
 
-    /* Glowing Primary Action CTA */
-    .glow-cta {
+    .glow-btn {
       width: 100%;
-      background: linear-gradient(135deg, #f43f5e, #ec4899);
+      background: linear-gradient(135deg, #ff5376, #9d4edd);
       color: white;
       border: none;
-      border-radius: 18px;
-      padding: 18px;
+      border-radius: 20px;
+      padding: 16px;
       font-size: 16px;
-      font-weight: 800;
-      letter-spacing: 0.5px;
+      font-weight: 700;
       cursor: pointer;
-      box-shadow: 0 10px 35px var(--glow);
-      transition: all 0.3s ease;
-      margin-top: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
+      box-shadow: 0 10px 25px rgba(255, 83, 118, 0.35);
+      transition: all 0.2s ease;
+      margin-top: 8px;
     }
 
-    .glow-cta:hover {
+    .glow-btn:hover {
       transform: scale(1.02);
-      box-shadow: 0 15px 45px rgba(244, 63, 94, 0.6);
     }
 
-    /* 3D Gift Box Interactive */
-    .gift-stage {
-      padding: 30px 0;
-      cursor: pointer;
-    }
-    .gift-box {
-      font-size: 78px;
-      display: inline-block;
-      animation: giftBounce 2s infinite ease-in-out;
-      filter: drop-shadow(0 15px 25px rgba(251, 191, 36, 0.4));
-      transition: transform 0.3s ease;
-    }
-    .gift-box:hover {
-      transform: scale(1.15) rotate(8deg);
-    }
-    @keyframes giftBounce {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-16px) rotate(-4deg); }
+    /* Photo Frame */
+    .cute-frame {
+      background: white;
+      padding: 12px 12px 18px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(157, 78, 221, 0.15);
+      margin-bottom: 16px;
+      border: 2px dashed #f272a1;
     }
 
-    /* Polaroid Glass Frame */
-    .polaroid {
-      background: #ffffff;
-      padding: 14px 14px 22px 14px;
-      border-radius: 16px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-      transform: rotate(-1.5deg);
-      transition: transform 0.3s ease;
-      margin-bottom: 20px;
-    }
-    .polaroid:hover {
-      transform: rotate(0deg) scale(1.03);
-    }
-    .polaroid img {
+    .cute-frame img {
       width: 100%;
       height: 250px;
       object-fit: cover;
-      border-radius: 10px;
+      border-radius: 14px;
       display: block;
     }
-    .polaroid-caption {
-      font-family: 'Playfair Display', serif;
-      font-size: 16px;
+
+    .caption {
+      margin-top: 10px;
+      font-size: 14px;
       font-weight: 600;
-      font-style: italic;
-      color: #1e293b;
-      margin-top: 12px;
-      text-align: center;
+      color: #6a0dad;
     }
 
-    .fade-in-up {
-      animation: fadeInUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    .gift-box {
+      font-size: 80px;
+      cursor: pointer;
+      display: inline-block;
+      margin: 18px 0;
+      animation: pulseBow 1.6s infinite ease-in-out;
+      filter: drop-shadow(0 10px 20px rgba(255, 112, 166, 0.3));
     }
 
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px) scale(0.97); }
+    @keyframes pulseBow {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15) rotate(4deg); }
+    }
+
+    .fade-anim {
+      animation: fadeIn 0.35s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px) scale(0.98); }
       to { opacity: 1; transform: translateY(0) scale(1); }
     }
   </style>
 </head>
 <body>
 
-  <canvas id="galaxy"></canvas>
-  <div class="aurora aurora-1"></div>
-  <div class="aurora aurora-2"></div>
+  <div class="sticker-layer">
+    <div class="sticker" style="top: 8%; left: 8%;">🎀</div>
+    <div class="sticker" style="top: 15%; right: 10%; animation-delay: -2s;">🧚‍♀️</div>
+    <div class="sticker" style="top: 45%; left: 4%; animation-delay: -4s;">🐞</div>
+    <div class="sticker" style="bottom: 14%; left: 10%; animation-delay: -1s;">✨</div>
+    <div class="sticker" style="bottom: 20%; right: 8%; animation-delay: -3s;">🐱</div>
+    <div class="sticker" style="top: 75%; right: 12%; animation-delay: -5s;">🌸</div>
+  </div>
 
   <div class="viewport">
-    <div class="glass-card" id="card">
-      <div id="dynamic-content" class="fade-in-up">
-        </div>
+    <div class="cute-card">
+      <div id="dynamic-content" class="fade-anim"></div>
     </div>
   </div>
 
   <script>
-    // --- SYNTHESIZED AUDIO ENGINE (Instant Zero-Asset Sounds) ---
+    // Audio engine for pops & fanfare
     const AudioEngine = {
       ctx: null,
       init() {
         if (!this.ctx) this.ctx = new (window.AudioContext || window.webkitAudioContext)();
       },
-      playPop() {
+      pop() {
         this.init();
         const osc = this.ctx.createOscillator();
         const gain = this.ctx.createGain();
         osc.type = "sine";
-        osc.frequency.setValueAtTime(450, this.ctx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(850, this.ctx.currentTime + 0.08);
-        gain.gain.setValueAtTime(0.3, this.ctx.currentTime);
+        osc.frequency.setValueAtTime(500, this.ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(900, this.ctx.currentTime + 0.08);
+        gain.gain.setValueAtTime(0.2, this.ctx.currentTime);
         gain.gain.linearRampToValueAtTime(0.01, this.ctx.currentTime + 0.08);
         osc.connect(gain);
         gain.connect(this.ctx.destination);
         osc.start();
         osc.stop(this.ctx.currentTime + 0.08);
       },
-      playFanfare() {
+      fanfare() {
         this.init();
-        const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
-        notes.forEach((freq, idx) => {
+        [523, 659, 783, 1046].forEach((f, i) => {
           const osc = this.ctx.createOscillator();
           const gain = this.ctx.createGain();
           osc.type = "triangle";
-          osc.frequency.setValueAtTime(freq, this.ctx.currentTime + idx * 0.12);
-          gain.gain.setValueAtTime(0.3, this.ctx.currentTime + idx * 0.12);
-          gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + idx * 0.12 + 0.6);
+          osc.frequency.setValueAtTime(f, this.ctx.currentTime + i * 0.1);
+          gain.gain.setValueAtTime(0.25, this.ctx.currentTime + i * 0.1);
+          gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + i * 0.1 + 0.5);
           osc.connect(gain);
           gain.connect(this.ctx.destination);
-          osc.start(this.ctx.currentTime + idx * 0.12);
-          osc.stop(this.ctx.currentTime + idx * 0.12 + 0.6);
+          osc.start(this.ctx.currentTime + i * 0.1);
+          osc.stop(this.ctx.currentTime + i * 0.1 + 0.5);
         });
       }
     };
 
-    // --- CELESTIAL BACKGROUND PARTICLES ---
-    const canvas = document.getElementById("galaxy");
-    const ctx = canvas.getContext("2d");
-    let stars = [];
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      stars = Array.from({ length: 90 }, () => ({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        radius: Math.random() * 1.5 + 0.5,
-        alpha: Math.random() * 0.8 + 0.2,
-        speed: Math.random() * 0.4 + 0.1
-      }));
-    }
-
-    function renderGalaxy() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      stars.forEach(s => {
-        ctx.beginPath();
-        ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${s.alpha})`;
-        ctx.fill();
-        s.y -= s.speed;
-        if (s.y < 0) s.y = canvas.height;
-      });
-      requestAnimationFrame(renderGalaxy);
-    }
-    window.addEventListener("resize", resizeCanvas);
-    resizeCanvas();
-    renderGalaxy();
-
-    // --- STORYLINE DATA ---
-    const quizSteps = [
+    // 5 Theme-Infused Questions
+    const questions = [
       {
-        tag: "Protocol Clearance // 01",
-        title: "Identify Yourself",
-        subtitle: "Answer honestly, the system detects falsehood instantly.",
+        tag: "Winx Magic Check 🧚‍♀️",
+        icons: "🎀 🌸 ✨",
+        title: "If we were in the Winx Club, what kind of fairy are you?",
         options: [
-          "The Certified Drama Queen 👑",
-          "The Innocent Angel (Big Lie) 😇",
-          "The Partner-in-Crime 💣",
-          "I demand to speak to my lawyer ⚖️"
+          "Fairy of endless gossiping 💅",
+          "Fairy of causing chaos 24/7 🌪️",
+          "Fairy of sleeping 12 hours 😴",
+          "Stella's twin (high maintenance) 👑"
         ]
       },
       {
-        tag: "Protocol Clearance // 02",
-        title: "Conflict Management",
-        subtitle: "Given how often we bicker, what's your official resolution plan?",
+        tag: "Miraculous Alert 🐞",
+        icons: "🐞 🐱 🖤",
+        title: "Hawk Moth sends an Akuma at you... what triggered it?",
         options: [
-          "Surrender & buy me food 🍕",
-          "Argue louder to prove nothing 🗣️",
-          "Pretend to be asleep 😴",
-          "Accept that I am forever right 🏆"
+          "I didn't share my fries with you 🍟",
+          "You lost an argument to me 🗣️",
+          "Someone woke you up early ⏰",
+          "Wi-Fi stopped working for 2 seconds 📶"
         ]
       },
       {
-        tag: "Final Trial // 03",
-        title: "Legal Adulthood Check",
-        subtitle: "What miraculous upgrade arrives with turning 18?",
+        tag: "Hello Kitty Sanrio Trial 🎀",
+        icons: "🎀 🐱 🍰",
+        title: "Which Sanrio personality matches you best?",
         options: [
-          "At least 250g of extra brain capacity 🧠",
-          "Treating me to luxury dinners ✨",
-          "Zero difference, still a menace 🥊",
-          "Voter card aesthetic only 🪪"
+          "Hello Kitty (Cute & bossy) 🎀",
+          "Kuromi (Spicy menace) 😈",
+          "My Melody (Living in dreamland) 🌸",
+          "Cinnamoroll (Soft and sleepy) ☁️"
+        ]
+      },
+      {
+        tag: "The Fight Policy 🥊",
+        icons: "🥊 🧁 💖",
+        title: "Since we fight in every single episode, what’s the fix?",
+        options: [
+          "You say 'You were right' 5 times 😇",
+          "Buy me iced coffee & dessert 🧋",
+          "We never stop, it's our signature brand 💅",
+          "Call Cat Noir to save us 🐾"
+        ]
+      },
+      {
+        tag: "The Legal Age Ceremony 🪪",
+        icons: "🎂 🥂 🪄",
+        title: "What is your main goal now that you're officially 18?",
+        options: [
+          "Develop 200g of extra brain power 🧠",
+          "Use your Miraculous to pass exams 🪄",
+          "Treat me to lunch with adult money 💳",
+          "Still act like a toddler 🍼"
         ]
       }
     ];
 
     const memories = [
       {
-        title: "Artifact No. 01 🎞️",
-        img: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800",
-        caption: "Iconic moment: Proof that chaos follows you everywhere."
+        tag: "Iconic Throwback 📸",
+        img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=700",
+        caption: "A true cinematic masterpiece. Never forget this look!"
       },
       {
-        title: "A Golden Bouquet 💐",
-        img: "https://images.unsplash.com/photo-1561181286-d3fee7d55364?w=800",
-        caption: "Virtual flowers that will outlast any argument we ever have."
+        tag: "A Special Bouquet 💐",
+        img: "https://images.unsplash.com/photo-1561181286-d3fee7d55364?w=700",
+        caption: "Magical Enchantix flowers that will never wither! 🌸"
       }
     ];
 
@@ -439,72 +372,69 @@
       `;
     }
 
-    function renderQuiz() {
-      const cur = quizSteps[currentStep];
-      stage.className = "fade-in-up";
+    function renderQuestion() {
+      const cur = questions[currentStep];
+      stage.className = "fade-anim";
       stage.innerHTML = `
-        ${updateDots(currentStep, quizSteps.length + 2)}
-        <div class="pill-tag">${cur.tag}</div>
-        <h1 class="serif-title">${cur.title}</h1>
-        <p class="subtitle">${cur.subtitle}</p>
-        <div class="btn-grid">
+        ${updateDots(currentStep, questions.length + 2)}
+        <div class="header-icons">${cur.icons}</div>
+        <div class="badge">${cur.tag}</div>
+        <h2 class="title">${cur.title}</h2>
+        <div class="options">
           ${cur.options.map(opt => `
-            <button class="interactive-btn" onclick="onSelect(this)">
+            <button class="option-btn" onclick="selectOption(this)">
               <span>${opt}</span>
-              <span style="opacity:0.3">✦</span>
+              <span style="opacity:0.4;">✦</span>
             </button>
           `).join('')}
         </div>
-        <button class="glow-cta" id="quiz-btn" style="display:none;" onclick="onNextQuiz()">
-          Continue Journey ➔
+        <button class="glow-btn" id="next-btn" style="display:none;" onclick="nextQuestion()">
+          Next Magic Trial ➔
         </button>
       `;
     }
 
-    function onSelect(btn) {
-      AudioEngine.playPop();
-      document.querySelectorAll(".interactive-btn").forEach(b => b.classList.remove("selected"));
+    function selectOption(btn) {
+      AudioEngine.pop();
+      document.querySelectorAll(".option-btn").forEach(b => b.classList.remove("selected"));
       btn.classList.add("selected");
-      const cta = document.getElementById("quiz-btn");
-      cta.style.display = "flex";
-      cta.classList.add("fade-in-up");
+      const nextBtn = document.getElementById("next-btn");
+      nextBtn.style.display = "block";
+      nextBtn.classList.add("fade-anim");
     }
 
-    function onNextQuiz() {
-      AudioEngine.playPop();
+    function nextQuestion() {
+      AudioEngine.pop();
       currentStep++;
-      if (currentStep < quizSteps.length) {
-        renderQuiz();
+      if (currentStep < questions.length) {
+        renderQuestion();
       } else {
         renderGiftBox();
       }
     }
 
     function renderGiftBox() {
-      AudioEngine.playFanfare();
-      confetti({ particleCount: 70, spread: 80, origin: { y: 0.6 } });
-      stage.className = "fade-in-up";
+      AudioEngine.fanfare();
+      confetti({ particleCount: 70, spread: 70, origin: { y: 0.6 } });
+      stage.className = "fade-anim";
       stage.innerHTML = `
-        ${updateDots(quizSteps.length, quizSteps.length + 2)}
-        <div class="pill-tag">Clearance Verified</div>
-        <h1 class="serif-title">You Unlocked It.</h1>
-        <p class="subtitle">Tap the golden vault below to crack open your real message.</p>
-        <div class="gift-stage" onclick="openGift()">
-          <div class="gift-box">🎁</div>
-        </div>
-        <p style="font-size:12px; color:#64748b; letter-spacing:1px; text-transform:uppercase;">Tap Box to Open</p>
+        ${updateDots(questions.length, questions.length + 2)}
+        <div class="header-icons">🎀 🐞 🧚‍♀️</div>
+        <div class="badge">Clearance Passed!</div>
+        <h2 class="title">Tikki, Spots On! Tap The Bow!</h2>
+        <p style="font-size: 14px; color: #6a0dad; margin-bottom: 8px;">Tap the Hello Kitty vault to reveal your wish</p>
+        <div class="gift-box" onclick="openBox()">🎁</div>
+        <p style="font-size: 12px; color: #b5179e; font-weight:700;">TAP TO UNLOCK ✨</p>
       `;
     }
 
-    function openGift() {
-      AudioEngine.playFanfare();
-      // Continuous Fireworks Cannon
-      const duration = 2.5 * 1000;
-      const end = Date.now() + duration;
-
+    function openBox() {
+      AudioEngine.fanfare();
+      // Multi-burst confetti
+      const end = Date.now() + 2000;
       (function frame() {
-        confetti({ particleCount: 5, angle: 60, spread: 55, origin: { x: 0 } });
-        confetti({ particleCount: 5, angle: 120, spread: 55, origin: { x: 1 } });
+        confetti({ particleCount: 6, angle: 60, spread: 55, origin: { x: 0 }, colors: ['#ff70a6', '#c77dff', '#ff3366'] });
+        confetti({ particleCount: 6, angle: 120, spread: 55, origin: { x: 1 }, colors: ['#ff70a6', '#c77dff', '#ff3366'] });
         if (Date.now() < end) requestAnimationFrame(frame);
       })();
 
@@ -512,36 +442,37 @@
     }
 
     function renderLetter() {
-      stage.className = "fade-in-up";
+      stage.className = "fade-anim";
       stage.innerHTML = `
-        ${updateDots(quizSteps.length + 1, quizSteps.length + 2)}
-        <div class="pill-tag" style="background: rgba(244,63,94,0.1); color:#fb7185; border-color: rgba(244,63,94,0.3);">Official Proclamation</div>
-        <h1 class="serif-title">Happy 18th Birthday! 🥂</h1>
-        <div style="text-align: left; font-size: 14.5px; line-height: 1.8; color: #cbd5e1; margin-bottom: 24px;">
-          Welcome to absolute freedom and zero legal immunity! May your brain cells finally multiply this year so you can keep up with me.<br><br>
-          Jokes aside, I wouldn't trade our relentless fights, dumb jokes, and 2 AM rants for anything. You're irreplaceable. Let's make this chapter iconic.
+        ${updateDots(questions.length + 1, questions.length + 2)}
+        <div class="header-icons">🌸 🎂 🧚‍♀️</div>
+        <div class="badge" style="background:#ffd1dc; color:#d90429; border-color:#d90429;">Official 18th Wish</div>
+        <h2 class="title" style="color: #ff3366; font-size: 24px;">Happy 18th Birthday! 💖</h2>
+        <div style="text-align: left; font-size: 14px; line-height: 1.8; color: #4a4e69; margin-bottom: 20px;">
+          So you're finally 18! Praying to the Winx fairies that you gain at least 500g of extra brain power so you can finally be as smart as me. 😎<br><br>
+          We might argue like Ladybug and Cat Noir 24/7, but honestly, thanks for tolerating me and always sticking around. Have the sweetest day, you menace! 🎀
         </div>
-        <button class="glow-cta" onclick="renderMemories()">
-          Inspect Confidential Photos 📸
+        <button class="glow-btn" onclick="renderMemories()">
+          Open The Cute Gallery 📸
         </button>
       `;
     }
 
     function renderMemories() {
-      AudioEngine.playPop();
+      AudioEngine.pop();
       const item = memories[memoryIdx];
-      stage.className = "fade-in-up";
+      stage.className = "fade-anim";
       stage.innerHTML = `
-        ${updateDots(quizSteps.length + 1, quizSteps.length + 2)}
-        <div class="pill-tag">${item.title}</div>
-        <div class="polaroid">
+        ${updateDots(questions.length + 1, questions.length + 2)}
+        <div class="badge">${item.tag}</div>
+        <div class="cute-frame">
           <img src="${item.img}" alt="Memory" />
-          <div class="polaroid-caption">${item.caption}</div>
+          <div class="caption">${item.caption}</div>
         </div>
         ${
           memoryIdx < memories.length - 1
-            ? `<button class="glow-cta" onclick="nextMemory()">Next Archive ➔</button>`
-            : `<button class="glow-cta" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); box-shadow:none;" onclick="location.reload()">Replay Experience ↺</button>`
+            ? `<button class="glow-btn" onclick="nextMemory()">Next Picture ➔</button>`
+            : `<button class="glow-btn" style="background: white; color: #9d4edd; border: 2px solid #9d4edd; box-shadow:none;" onclick="location.reload()">Replay Magic ↺</button>`
         }
       `;
     }
@@ -551,8 +482,7 @@
       renderMemories();
     }
 
-    // Launch initial stage
-    renderQuiz();
+    renderQuestion();
   </script>
 </body>
 </html>
