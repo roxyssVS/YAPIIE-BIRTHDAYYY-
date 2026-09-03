@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Protocol 18: The Multiverse Odyssey 🎀✨</title>
+  <title>Veronicaa Persis // The 18th Multiverse Odyssey ✨🎀</title>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Playfair+Display:ital,wght@1,600;1,800&family=Quicksand:wght@600;700&display=swap');
 
     :root {
       --lavender: #f1e9ff;
-      --lavender-deep: #7048e8;
+      --lavender-dark: #6b21a8;
       --kitty-pink: #ff6b8b;
-      --tangled-gold: #ffbe0b;
-      --card-glass: rgba(255, 255, 255, 0.88);
+      --gold: #ffbe0b;
+      --card-bg: rgba(255, 255, 255, 0.92);
     }
 
     * {
@@ -26,23 +26,18 @@
     }
 
     body {
-      background: radial-gradient(circle at 50% 20%, #e9d5ff, #d8b4fe 40%, #fbcfe8 90%);
+      background: radial-gradient(circle at 50% 20%, #e9d5ff, #d8b4fe 45%, #ffd1dc 90%);
       min-height: 100vh;
       overflow-x: hidden;
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 16px;
-      transition: background 1.2s ease;
+      transition: background 1.5s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
     }
 
-    /* Tangled Dark Lantern Sky Mode */
-    body.tangled-night {
-      background: radial-gradient(circle at 50% 30%, #1e1035 0%, #0c071e 60%, #030014 100%) !important;
-    }
-
-    /* Ambient Floating Stickers */
+    /* Ambient Floating Charms */
     .stickers-board {
       position: fixed;
       inset: 0;
@@ -51,30 +46,31 @@
     }
     .charm {
       position: absolute;
-      font-size: 28px;
-      opacity: 0.75;
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      opacity: 0.85;
       animation: floatCharm 6s infinite ease-in-out alternate;
     }
     @keyframes floatCharm {
       0% { transform: translateY(0px) rotate(0deg); }
-      100% { transform: translateY(-25px) rotate(18deg) scale(1.1); }
+      100% { transform: translateY(-20px) rotate(14deg) scale(1.1); }
     }
 
-    /* Lanterns */
-    .lantern {
+    /* Tangled 3D Canvas */
+    #lantern-canvas {
       position: fixed;
-      width: 22px;
-      height: 32px;
-      background: linear-gradient(to top, #ff9e00, #ffe49e);
-      border-radius: 4px 4px 10px 10px;
-      box-shadow: 0 0 20px #ffbe0b;
-      opacity: 0;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
       pointer-events: none;
       z-index: 2;
+      opacity: 0;
+      transition: opacity 2s ease;
     }
 
-    /* Main Responsive Card */
-    .container {
+    .viewport {
       position: relative;
       z-index: 10;
       width: 100%;
@@ -82,15 +78,15 @@
     }
 
     .main-card {
-      background: var(--card-glass);
+      background: var(--card-bg);
       backdrop-filter: blur(28px);
       -webkit-backdrop-filter: blur(28px);
       border: 3.5px solid rgba(255, 255, 255, 0.95);
-      border-radius: 38px;
-      padding: 32px 24px;
-      box-shadow: 0 25px 65px rgba(112, 72, 232, 0.22);
+      border-radius: 36px;
+      padding: 28px 22px;
+      box-shadow: 0 25px 60px rgba(107, 33, 168, 0.22);
       text-align: center;
-      position: relative;
+      transition: all 0.5s ease;
     }
 
     .badge {
@@ -101,7 +97,7 @@
       text-transform: uppercase;
       padding: 6px 14px;
       border-radius: 50px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
     h2.title {
@@ -109,30 +105,55 @@
       font-weight: 700;
       color: #2b0938;
       line-height: 1.35;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     p.subtitle {
       font-size: 14px;
       line-height: 1.6;
       color: #495057;
-      margin-bottom: 22px;
+      margin-bottom: 18px;
     }
 
-    /* Interactive Options Grid */
+    /* Character Showcase Boxes */
+    .char-stage {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 12px;
+      border: 2px solid #ecd6ff;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+    }
+
+    .char-img {
+      height: 95px;
+      object-fit: contain;
+      filter: drop-shadow(0 6px 12px rgba(0,0,0,0.15));
+      animation: charBob 2.5s infinite ease-in-out alternate;
+    }
+
+    @keyframes charBob {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-8px); }
+    }
+
     .options-grid {
       display: flex;
       flex-direction: column;
-      gap: 11px;
-      margin-bottom: 18px;
+      gap: 10px;
+      margin-bottom: 16px;
     }
 
     .btn-opt {
       width: 100%;
       background: #ffffff;
       border: 2px solid #e9d5ff;
-      border-radius: 20px;
-      padding: 15px 18px;
+      border-radius: 18px;
+      padding: 14px 16px;
       font-size: 14px;
       font-weight: 600;
       color: #343a40;
@@ -151,15 +172,15 @@
     }
 
     .btn-opt.selected {
-      background: linear-gradient(135deg, var(--kitty-pink), var(--lavender-deep));
+      background: linear-gradient(135deg, var(--kitty-pink), var(--lavender-dark));
       color: white;
       border-color: transparent;
-      box-shadow: 0 8px 24px rgba(255, 107, 139, 0.35);
+      box-shadow: 0 8px 20px rgba(255, 107, 139, 0.35);
     }
 
     .action-btn {
       width: 100%;
-      background: linear-gradient(135deg, var(--kitty-pink), var(--lavender-deep));
+      background: linear-gradient(135deg, var(--kitty-pink), var(--lavender-dark));
       color: white;
       border: none;
       border-radius: 22px;
@@ -171,78 +192,43 @@
       transition: all 0.2s ease;
       margin-top: 8px;
     }
+
     .action-btn:hover {
       transform: scale(1.02);
       box-shadow: 0 12px 30px rgba(255, 107, 139, 0.5);
     }
 
-    /* Anywhere Door Minigame */
-    .anywhere-door {
-      width: 110px;
-      height: 160px;
-      background: #ff4d6d;
-      border: 4px solid #c9184a;
-      border-radius: 12px;
-      margin: 18px auto;
-      position: relative;
-      cursor: pointer;
-      box-shadow: 0 15px 30px rgba(201, 24, 74, 0.35);
-      transform-style: preserve-3d;
-      transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-    }
-    .door-knob {
-      position: absolute;
-      right: 12px;
-      top: 50%;
-      width: 16px;
-      height: 16px;
-      background: #ffd166;
-      border-radius: 50%;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
-
-    /* Photo Frame */
-    .photo-card {
-      background: white;
-      padding: 12px 12px 18px;
-      border-radius: 24px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.12);
-      margin-bottom: 16px;
-      border: 2px dashed var(--kitty-pink);
-    }
-    .photo-card img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
+    .roast-reveal {
+      background: #fff0f3;
+      border: 2px dashed #ff4d6d;
       border-radius: 18px;
-      display: block;
-    }
-    .caption {
-      font-family: 'Playfair Display', serif;
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--lavender-deep);
-      margin-top: 12px;
-    }
-
-    /* Coupon Book */
-    .coupon {
-      background: #fff;
-      border: 2px dashed var(--kitty-pink);
-      border-radius: 16px;
       padding: 14px;
-      margin-bottom: 10px;
+      margin: 14px 0;
       text-align: left;
+      animation: popIn 0.3s ease;
     }
-    .coupon h4 { color: var(--kitty-pink); font-size: 14px; margin-bottom: 4px; }
-    .coupon p { font-size: 12px; color: #666; }
 
-    .fade-switch {
+    @keyframes popIn {
+      from { transform: scale(0.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .coupon-card {
+      background: #ffffff;
+      border: 2px dashed var(--kitty-pink);
+      border-radius: 20px;
+      padding: 16px;
+      margin-top: 16px;
+      text-align: left;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    }
+
+    .fade-anim {
       animation: stageFade 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
     @keyframes stageFade {
-      from { opacity: 0; transform: translateY(14px) scale(0.97); }
+      from { opacity: 0; transform: translateY(12px) scale(0.97); }
       to { opacity: 1; transform: translateY(0) scale(1); }
     }
   </style>
@@ -250,23 +236,23 @@
 <body>
 
   <div class="stickers-board">
-    <div class="charm" style="top: 8%; left: 8%;">🎀</div>
-    <div class="charm" style="top: 16%; right: 10%; animation-delay: -2s;">🧚‍♀️</div>
-    <div class="charm" style="top: 45%; left: 6%; animation-delay: -4s;">🐞</div>
-    <div class="charm" style="top: 65%; right: 8%; animation-delay: -1s;">⚡</div>
-    <div class="charm" style="bottom: 12%; left: 10%; animation-delay: -3s;">🍳</div>
-    <div class="charm" style="bottom: 20%; right: 12%; animation-delay: -5s;">☀️</div>
+    <img src="https://media.tenor.com/7bQy63dK6WAAAAAi/hello-kitty-sanrio.gif" class="charm" style="top: 6%; left: 6%; width: 44px;" alt="Hello Kitty" />
+    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/25.gif" class="charm" style="top: 14%; right: 8%; width: 42px; animation-delay: -2s;" alt="Pikachu" />
+    <img src="https://media.tenor.com/pGZ9BvFf318AAAAi/shin-chan.gif" class="charm" style="top: 45%; left: 4%; width: 48px; animation-delay: -3.5s;" alt="Shinchan" />
+    <img src="https://media.tenor.com/f9W5V9H1a3IAAAAi/miraculous-ladybug-tikki.gif" class="charm" style="top: 68%; right: 6%; width: 40px; animation-delay: -1.5s;" alt="Tikki" />
+    <img src="https://media.tenor.com/x0qjR2Y9a_4AAAAi/winx-bloom.gif" class="charm" style="bottom: 12%; left: 8%; width: 46px; animation-delay: -4s;" alt="Winx" />
   </div>
 
-  <div class="container">
-    <div class="main-card" id="card-box">
-      <div id="screen" class="fade-switch"></div>
+  <canvas id="lantern-canvas"></canvas>
+
+  <div class="viewport">
+    <div class="main-card" id="card-shell">
+      <div id="screen" class="fade-anim"></div>
     </div>
   </div>
 
   <script>
-    // Audio synthesizer for cute SFX
-    const AudioPlay = {
+    const Sound = {
       ctx: null,
       init() {
         if (!this.ctx) this.ctx = new (window.AudioContext || window.webkitAudioContext)();
@@ -284,208 +270,226 @@
         o.start();
         o.stop(this.ctx.currentTime + dur);
       },
-      click() { this.beep(600, "sine", 0.06); },
-      chime() {
-        [523.25, 659.25, 783.99, 1046.50].forEach((freq, i) => {
-          setTimeout(() => this.beep(freq, "triangle", 0.35), i * 90);
+      click() { this.beep(600, "sine", 0.05); },
+      wrong() { this.beep(280, "sawtooth", 0.2); },
+      tangledMusicBox() {
+        const notes = [392, 440, 493.88, 587.33, 659.25, 783.99]; 
+        notes.forEach((freq, i) => {
+          setTimeout(() => this.beep(freq, "sine", 0.6), i * 220);
         });
       },
       fanfare() {
-        [440, 554, 659, 880, 1108].forEach((freq, i) => {
-          setTimeout(() => this.beep(freq, "sine", 0.4), i * 110);
+        [523, 659, 783, 1046].forEach((f, i) => {
+          setTimeout(() => this.beep(f, "triangle", 0.4), i * 110);
         });
       }
     };
 
-    let step = 0;
+    let act = 1;
+    let shinchanQIdx = 0;
     const screen = document.getElementById("screen");
 
-    function renderStage() {
-      screen.className = "fade-switch";
+    function renderAct() {
+      screen.className = "fade-anim";
 
-      // 1. POKÉMON BATTLE
-      if (step === 0) {
-        document.body.className = "";
+      // ================= ACT 1: REAL POKÉMON BATTLE =================
+      if (act === 1) {
         screen.innerHTML = `
-          <div class="badge" style="background:#fee2e2; color:#ef4444;">Pokémon Route 18 ⚡</div>
-          <h2 class="title">A wild 18-Year-Old appeared!</h2>
-          <p class="subtitle">She looks ready to argue and hasn't eaten since 2 PM. What is your strategy?</p>
-          <div class="options-grid">
-            <button class="btn-opt" onclick="selectOpt(this)"><span>FIGHT: Argue back until 3:00 AM 🥊</span></button>
-            <button class="btn-opt" onclick="selectOpt(this)"><span>BRIBE: Hand over iced coffee & cake 🎂</span></button>
-            <button class="btn-opt" onclick="selectOpt(this)"><span>RUN: Flee for your life 🏃</span></button>
-            <button class="btn-opt" onclick="selectOpt(this)"><span>POKÉBALL: Trap her in childhood forever 🪄</span></button>
-          </div>
-          <button class="action-btn" id="next-btn" style="display:none;" onclick="nextStep()">Continue Quest ➔</button>
-        `;
-      }
-
-      // 2. DORAEMON ANYWHERE DOOR
-      else if (step === 1) {
-        screen.innerHTML = `
-          <div class="badge" style="background:#e0f2fe; color:#0284c7;">22nd Century Gadget 🚪</div>
-          <h2 class="title">Doraemon's Anywhere Door</h2>
-          <p class="subtitle">Tap the pink door to find out where your mental age is actually located right now...</p>
-          <div class="anywhere-door" onclick="openDoor(this)">
-            <div class="door-knob"></div>
-          </div>
-          <p id="door-text" style="font-size:13px; font-weight:700; color:#c9184a;">TAP THE DOOR TO ENTER ✨</p>
-        `;
-      }
-
-      // 3. SHINCHAN ROAST
-      else if (step === 2) {
-        screen.innerHTML = `
-          <div class="badge" style="background:#fef3c7; color:#d97706;">Action Kamen Network 🐶</div>
-          <h2 class="title">Shinchan's Legal Evaluation</h2>
-          <p class="subtitle">Shinchan looked at your birth certificate and asked: "If you're 18 now, why do you still act 4?"</p>
-          <div class="options-grid">
-            <button class="btn-opt" onclick="selectOpt(this)"><span>Because adulting is an elaborate scam 🫑</span></button>
-            <button class="btn-opt" onclick="selectOpt(this)"><span>My brain is on power-saving mode 🔋</span></button>
-            <button class="btn-opt" onclick="selectOpt(this)"><span>Ask my best friend, they cause all my tantrums 😇</span></button>
-            <button class="btn-opt" onclick="selectOpt(this)"><span>*Wiggles eyebrows like Shinchan* 🕺</span></button>
-          </div>
-          <button class="action-btn" id="next-btn" style="display:none;" onclick="nextStep()">Defend Yourself ➔</button>
-        `;
-      }
-
-      // 4. MIRACULOUS LUCKY CHARM
-      else if (step === 3) {
-        screen.innerHTML = `
-          <div class="badge" style="background:#ffe4e6; color:#e11d48;">Parisian Crisis 🐞</div>
-          <h2 class="title">Lucky Charm Summoned!</h2>
-          <p class="subtitle">Hawk Moth sent an Akuma because you turned 18. Tikki dropped this item to protect you:</p>
-          <div style="font-size:75px; margin: 12px 0;" onclick="AudioPlay.click()">🍳</div>
-          <p style="font-size:14px; font-weight:700; color:#be123c; margin-bottom:18px;">A Cast-Iron Tangled Frying Pan!</p>
-          <div class="options-grid">
-            <button class="btn-opt" onclick="selectOpt(this)"><span>Smack adult responsibilities far away 🚀</span></button>
-            <button class="btn-opt" onclick="selectOpt(this)"><span>Use it to fry eggs because I'm hungry 🍳</span></button>
-            <button class="btn-opt" onclick="selectOpt(this)"><span>Threaten my best friend whenever we disagree 👑</span></button>
-          </div>
-          <button class="action-btn" id="next-btn" style="display:none;" onclick="nextStep()">Charge Ahead ➔</button>
-        `;
-      }
-
-      // 5. TANGLED LANTERN NIGHT (THE EMOTIONAL CLIMAX)
-      else if (step === 4) {
-        document.body.className = "tangled-night";
-        launchLanterns();
-        AudioPlay.chime();
-        screen.innerHTML = `
-          <div class="badge" style="background:rgba(255,190,11,0.2); color:#ffbe0b;">Kingdom of Corona ☀️</div>
-          <h2 class="title" style="color:#ffbe0b;">At Last You See The Light</h2>
-          <p class="subtitle" style="color:#e9d5ff;">Rapunzel left the tower at 18, and look at you—you survived childhood. Touch the glowing lantern below to ignite your sky.</p>
-          <div style="font-size:78px; cursor:pointer; margin: 14px 0; filter:drop-shadow(0 0 20px #ffbe0b);" onclick="igniteSky()">🏮</div>
-          <p style="font-size:13px; color:#fde047; font-weight:700;">TAP THE LANTERN TO ILLUMINATE ✨</p>
-        `;
-      }
-
-      // 6. WINX ENCHANTIX & THE LETTER
-      else if (step === 5) {
-        document.body.className = "";
-        AudioPlay.fanfare();
-        confetti({ particleCount: 100, spread: 80, origin: { y: 0.6 } });
-        screen.innerHTML = `
-          <div class="badge" style="background:#f3e8ff; color:#7e22ce;">Enchantix Complete 🧚‍♀️</div>
-          <h2 class="title" style="color:#ff0054; font-size:24px;">Happy 18th Birthday! 👑💖</h2>
-          <div style="text-align:left; font-size:14px; line-height:1.8; color:#3d344d; margin-bottom:20px; background:rgba(255,255,255,0.7); padding:16px; border-radius:18px;">
-            Dear you,<br><br>
-            You are officially 18. No more excuses for your toddler behavior (though let’s be honest, you won't change, and I wouldn't want you to).<br><br>
-            Through all the random bickering, 2 AM life rants, inside jokes nobody else understands, and everyday drama—you have been my absolute favorite person to navigate life with. I hope this year brings you all the freedom you dreamed of, zero Akumas, and all the happiness in the universe.<br><br>
-            Always in your corner. Happy 18th, you menace! 🎀
-          </div>
-          <button class="action-btn" onclick="nextStep()">Claim Your VIP Perks 🎁</button>
-        `;
-      }
-
-      // 7. BEST-FRIEND COUPON BOOK & MEMORY VAULT
-      else if (step === 6) {
-        AudioPlay.chime();
-        screen.innerHTML = `
-          <div class="badge" style="background:#fee2e2; color:#ef4444;">Exclusive 18th Privileges 🎟️</div>
-          <h2 class="title">Your Birthday Coupons</h2>
-          <p class="subtitle">Valid for life. Screenshot to redeem whenever you want:</p>
+          <div class="badge" style="background:#fee2e2; color:#ef4444;">ACT 1 // BATTLE COMMENCE ⚡</div>
+          <h2 class="title">Trainer Veronicaa Persis!</h2>
+          <p class="subtitle">Team Rocket ambushed you to steal Pikachu! You reached for your Pokéball and summoned your starter: <b>Shorty</b>.</p>
           
-          <div class="coupon">
-            <h4>🍰 The "You Were Right" Free Pass</h4>
-            <p>Redeem this during any argument, and I have to formally admit you won.</p>
-          </div>
-          <div class="coupon">
-            <h4>🧋 Emergency Iced Coffee / Snack Treaty</h4>
-            <p>I buy you your comfort snack with no questions asked.</p>
-          </div>
-          <div class="coupon">
-            <h4>📞 3:00 AM Rant Hotline</h4>
-            <p>Guaranteed listening time for any drama, breakdowns, or nonsense.</p>
-          </div>
-
-          <div class="photo-card" style="margin-top:16px;">
-            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=700" alt="Memory" />
-            <div class="caption">"Here's to the girl who brings the magic everywhere." ✨</div>
+          <div class="char-stage">
+            <div style="text-align:center;">
+              <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/175.gif" class="char-img" alt="Shorty" />
+              <p style="font-size:11px; font-weight:700; color:#6b21a8; margin-top:4px;">Shorty (Lvl 18)</p>
+            </div>
+            <div style="font-size:20px; font-weight:bold; color:#ff4d6d;">VS</div>
+            <div style="text-align:center;">
+              <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/25.gif" class="char-img" alt="Pikachu" />
+              <p style="font-size:11px; font-weight:700; color:#d97706; margin-top:4px;">Pikachu (Needs Rescue)</p>
+            </div>
           </div>
 
-          <button class="action-btn" style="background:#fff; color:var(--lavender-deep); border:2px solid var(--lavender-deep);" onclick="location.reload()">Replay The Journey ↺</button>
+          <div class="options-grid">
+            <button class="btn-opt" onclick="runPokemonMove(1)"><span>Use Shorty's "Baby Tantrum" Cry 🍼</span></button>
+            <button class="btn-opt" onclick="runPokemonMove(2)"><span>Order Shorty to Tackle Team Rocket 🥊</span></button>
+            <button class="btn-opt" onclick="runPokemonMove(3)"><span>Rescue Pikachu with Veronicaa's Yap Attack 🗣️</span></button>
+          </div>
+          <div id="poke-response"></div>
         `;
       }
-    }
 
-    function selectOpt(btn) {
-      AudioPlay.click();
-      document.querySelectorAll(".btn-opt").forEach(b => b.classList.remove("selected"));
-      btn.classList.add("selected");
-      const n = document.getElementById("next-btn");
-      if (n) {
-        n.style.display = "block";
-        n.classList.add("fade-switch");
+      // ================= ACT 2: REAL SHINCHAN INTERROGATION =================
+      else if (act === 2) {
+        renderShinchanQuestion();
+      }
+
+      // ================= ACT 3: REAL TANGLED 3D SKY SHOW =================
+      else if (act === 3) {
+        startTangledShow();
+      }
+
+      // ================= ACT 4: LOVE & BRAIN-EATING TRUCE =================
+      else if (act === 4) {
+        renderAct4();
       }
     }
 
-    function nextStep() {
-      AudioPlay.click();
-      step++;
-      renderStage();
+    function runPokemonMove(m) {
+      Sound.click();
+      const resp = document.getElementById("poke-response");
+      confetti({ particleCount: 50, spread: 60, origin: { y: 0.7 } });
+      
+      let msg = "";
+      if (m === 1) msg = "Shorty cried with 10,000 decibels! Team Rocket dropped Pikachu and blasted off!";
+      if (m === 2) msg = "Shorty tripped over its own feet and bumped Team Rocket straight into orbit!";
+      if (m === 3) msg = "You argued non-stop for 4 straight minutes! Team Rocket apologized and gave Pikachu back!";
+
+      resp.innerHTML = `
+        <div class="roast-reveal" style="background:#f3e8ff; border-color:#8338ec;">
+          <h4 style="color:#6b21a8; font-size:14px;">Victory! Pikachu is safe.</h4>
+          <p style="font-size:13px; color:#4a4e69; margin-top:4px;">${msg}</p>
+        </div>
+        <button class="action-btn" onclick="act=2; renderAct();">Enter Shinchan's Realm ➔</button>
+      `;
     }
 
-    function openDoor(el) {
-      AudioPlay.chime();
-      el.style.transform = "perspective(600px) rotateY(-80deg)";
-      document.getElementById("door-text").innerText = "Destination: Kindergarten Classroom 🍼";
-      confetti({ particleCount: 40, spread: 60, origin: { y: 0.6 } });
-      setTimeout(() => nextStep(), 1300);
-    }
-
-    function launchLanterns() {
-      for (let i = 0; i < 18; i++) {
-        const l = document.createElement("div");
-        l.className = "lantern";
-        l.style.left = `${Math.random() * 90}%`;
-        l.style.bottom = "-50px";
-        document.body.appendChild(l);
-
-        const dur = Math.random() * 5 + 6;
-        const delay = Math.random() * 3;
-
-        l.animate([
-          { transform: `translateY(0) scale(${Math.random() * 0.5 + 0.6})`, opacity: 0 },
-          { opacity: 0.8, offset: 0.2 },
-          { opacity: 0.8, offset: 0.8 },
-          { transform: `translateY(-110vh) scale(1.1)`, opacity: 0 }
-        ], {
-          duration: dur * 1000,
-          delay: delay * 1000,
-          iterations: Infinity
-        });
+    const shinchanQuestions = [
+      {
+        q: "Shinchan asks: 'Arrey Veronicaa didi! Why are you turning 18 today?'",
+        options: [
+          "To finally become mature & responsible 😇",
+          "Because nature forced me to grow up 🌸",
+          "So I can legally boss everyone around 👑"
+        ],
+        roast: "WRONG! Shinchan says: 'Didi, you only turned 18 so you can eat two cakes at once and complain about back pain!'"
+      },
+      {
+        q: "Shinchan asks: 'Who is clearly the boss in your friendship?'",
+        options: [
+          "Obviously me, Veronicaa Persis! 💅",
+          "We have mutual equal respect 🤝",
+          "I refuse to answer without an iced coffee 🧋"
+        ],
+        roast: "WRONG AGAIN! The actual answer: Neither. One of you is busy eating brains, and the other is suffering peacefully."
       }
+    ];
+
+    function renderShinchanQuestion() {
+      const item = shinchanQuestions[shinchanQIdx];
+      screen.innerHTML = `
+        <div class="badge" style="background:#fef3c7; color:#d97706;">ACT 2 // SHINCHAN'S INTERROGATION 🐶</div>
+        
+        <div style="margin-bottom:12px;">
+          <img src="https://media.tenor.com/pGZ9BvFf318AAAAi/shin-chan.gif" style="height:105px; object-fit:contain;" alt="Shinchan Dancing" />
+        </div>
+
+        <h2 class="title">${item.q}</h2>
+        <div class="options-grid">
+          ${item.options.map((opt) => `
+            <button class="btn-opt" onclick="handleShinchanChoice('${item.roast.replace(/'/g, "\\'")}')">
+              <span>${opt}</span>
+            </button>
+          `).join('')}
+          <button class="btn-opt" style="border: 2px solid #ff70a6; background:#fff0f5;" onclick="triggerLanternShift()">
+            <span>"I don't know / IDK" 🤷‍♀️ (Click Here)</span>
+          </button>
+        </div>
+        <div id="shinchan-roast"></div>
+      `;
     }
 
-    function igniteSky() {
-      AudioPlay.fanfare();
-      confetti({ particleCount: 120, spread: 100, origin: { y: 0.5 }, colors: ['#ffbe0b', '#ffd166', '#ffffff'] });
-      setTimeout(() => nextStep(), 1000);
+    function handleShinchanChoice(roastText) {
+      Sound.wrong();
+      const div = document.getElementById("shinchan-roast");
+      div.innerHTML = `
+        <div class="roast-reveal">
+          <p style="font-size:13.5px; color:#be123c; font-weight:600;">❌ ${roastText}</p>
+          <p style="font-size:12px; color:#666; margin-top:6px;">Hint: Tap <i>"I don't know / IDK"</i> to break out of this!</p>
+        </div>
+      `;
     }
 
-    // Launch
-    renderStage();
-  </script>
-</body>
-</html>
+    function triggerLanternShift() {
+      Sound.click();
+      act = 3;
+      renderAct();
+    }
+
+    // ================= ACT 3: TANGLED 3D LANTERNS & BOAT =================
+    function startTangledShow() {
+      document.body.style.background = "radial-gradient(circle at 50% 30%, #1a0933 0%, #08031a 70%, #02000d 100%)";
+      const card = document.getElementById("card-shell");
+      card.style.background = "rgba(18, 10, 35, 0.75)";
+      card.style.borderColor = "rgba(255, 190, 11, 0.4)";
+      
+      const canvas = document.getElementById("lantern-canvas");
+      canvas.style.opacity = "1";
+      startLanternPhysics();
+
+      Sound.tangledMusicBox();
+
+      let timeLeft = 30;
+      screen.innerHTML = `
+        <div class="badge" style="background:rgba(255,190,11,0.2); color:#ffbe0b;">ACT 3 // KINGDOM OF CORONA ☀️</div>
+        
+        <div style="margin: 8px 0;">
+          <img src="https://media.tenor.com/Qh0oN6qj0dYAAAAi/tangled-rapunzel.gif" style="width:100%; max-height:165px; object-fit:cover; border-radius:18px; border:2px solid rgba(255,190,11,0.5);" alt="Rapunzel & Flynn" />
+        </div>
+
+        <h2 class="title" style="color:#ffbe0b; font-size:21px; margin-top:10px;">At Last You See The Light</h2>
+        <p class="subtitle" style="color:#e9d5ff; font-size:14.5px; line-height:1.7;">
+          Flynn gently steers the boat, Rapunzel looks straight at you and smiles:<br>
+          <span style="font-size:20px; font-weight:700; color:#ffd166; font-family:'Playfair Display',serif; display:inline-block; margin-top:6px;">
+            "YAPPIE BIRTHDAY VERONICAA ANI! ✨"
+          </span>
+        </p>
+
+        <div style="font-size:28px; font-weight:700; color:#ffbe0b; margin: 8px 0;" id="timer-display">30s</div>
+        <p style="font-size:12px; color:#cbd5e1;">Watch your lanterns rise into the night sky...</p>
+        
+        <button class="action-btn" id="skip-act4" style="display:none; background: linear-gradient(135deg, #ffbe0b, #ff70a6); color:#1a0933; font-weight:bold;" onclick="act=4; renderAct();">
+          Open Veronicaa's Birthday Letter 💖
+        </button>
+      `;
+
+      const countdown = setInterval(() => {
+        timeLeft--;
+        const timerElem = document.getElementById("timer-display");
+        if (timerElem) timerElem.innerText = `${timeLeft}s`;
+        if (timeLeft <= 0) {
+          clearInterval(countdown);
+          if (timerElem) timerElem.style.display = "none";
+          const skipBtn = document.getElementById("skip-act4");
+          if (skipBtn) {
+            skipBtn.style.display = "block";
+            skipBtn.classList.add("fade-anim");
+          }
+        }
+      }, 1000);
+    }
+
+    function startLanternPhysics() {
+      const canvas = document.getElementById("lantern-canvas");
+      const ctx = canvas.getContext("2d");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      let lanterns = Array.from({ length: 30 }, () => ({
+        x: Math.random() * canvas.width,
+        y: canvas.height + Math.random() * 200,
+        z: Math.random() * 0.8 + 0.4,
+        speed: Math.random() * 0.8 + 0.4,
+        sway: Math.random() * 2,
+        swaySpeed: Math.random() * 0.02 + 0.01
+      }));
+
+      function loop() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        lanterns.forEach(l => {
+          l.y -= l.speed;
+          l.sway += l.swaySpeed;
+          const swayX = Math.sin(l.sway) * 15;
+
+          const
