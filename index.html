@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>A Magical Birthday Quest ✨🎀</title>
+  <title>Protocol 18: The Multiverse Odyssey 🎀✨</title>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@500;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Playfair+Display:ital,wght@1,600;1,800&family=Quicksand:wght@600;700&display=swap');
 
     :root {
-      --lavender-bg: #e6dcfa;
-      --card-bg: rgba(255, 255, 255, 0.78);
-      --accent-pink: #ff70a6;
-      --accent-purple: #9d4edd;
-      --ladybug-red: #ff3366;
+      --lavender: #f1e9ff;
+      --lavender-deep: #7048e8;
+      --kitty-pink: #ff6b8b;
+      --tangled-gold: #ffbe0b;
+      --card-glass: rgba(255, 255, 255, 0.88);
     }
 
     * {
@@ -26,93 +26,79 @@
     }
 
     body {
-      background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 50%, #fbc2eb 100%);
+      background: radial-gradient(circle at 50% 20%, #e9d5ff, #d8b4fe 40%, #fbcfe8 90%);
       min-height: 100vh;
       overflow-x: hidden;
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 16px;
+      transition: background 1.2s ease;
       position: relative;
     }
 
-    /* Floating Stickers / Charms */
-    .sticker-layer {
+    /* Tangled Dark Lantern Sky Mode */
+    body.tangled-night {
+      background: radial-gradient(circle at 50% 30%, #1e1035 0%, #0c071e 60%, #030014 100%) !important;
+    }
+
+    /* Ambient Floating Stickers */
+    .stickers-board {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      inset: 0;
       pointer-events: none;
       z-index: 1;
-      overflow: hidden;
     }
-
-    .sticker {
+    .charm {
       position: absolute;
       font-size: 28px;
-      opacity: 0.85;
-      animation: floatCharm 7s infinite ease-in-out alternate;
+      opacity: 0.75;
+      animation: floatCharm 6s infinite ease-in-out alternate;
     }
-
     @keyframes floatCharm {
-      0% { transform: translateY(0px) rotate(0deg) scale(1); }
-      100% { transform: translateY(-30px) rotate(15deg) scale(1.1); }
+      0% { transform: translateY(0px) rotate(0deg); }
+      100% { transform: translateY(-25px) rotate(18deg) scale(1.1); }
     }
 
-    .viewport {
+    /* Lanterns */
+    .lantern {
+      position: fixed;
+      width: 22px;
+      height: 32px;
+      background: linear-gradient(to top, #ff9e00, #ffe49e);
+      border-radius: 4px 4px 10px 10px;
+      box-shadow: 0 0 20px #ffbe0b;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Main Responsive Card */
+    .container {
       position: relative;
       z-index: 10;
       width: 100%;
-      max-width: 410px;
+      max-width: 420px;
     }
 
-    .cute-card {
-      background: var(--card-bg);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 3px solid rgba(255, 255, 255, 0.8);
-      border-radius: 36px;
-      padding: 30px 24px;
-      box-shadow: 0 20px 45px rgba(157, 78, 221, 0.2), inset 0 2px 5px rgba(255, 255, 255, 0.6);
+    .main-card {
+      background: var(--card-glass);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border: 3.5px solid rgba(255, 255, 255, 0.95);
+      border-radius: 38px;
+      padding: 32px 24px;
+      box-shadow: 0 25px 65px rgba(112, 72, 232, 0.22);
       text-align: center;
-    }
-
-    .header-icons {
-      font-size: 28px;
-      margin-bottom: 8px;
-      letter-spacing: 4px;
-    }
-
-    .stepper {
-      display: flex;
-      justify-content: center;
-      gap: 6px;
-      margin-bottom: 16px;
-    }
-
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: rgba(157, 78, 221, 0.2);
-      transition: all 0.3s ease;
-    }
-
-    .dot.active {
-      background: var(--accent-pink);
-      width: 24px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px var(--accent-pink);
+      position: relative;
     }
 
     .badge {
       display: inline-block;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
-      color: #7209b7;
-      background: #f1e4ff;
-      border: 1px dashed #b5179e;
+      letter-spacing: 1px;
+      text-transform: uppercase;
       padding: 6px 14px;
       border-radius: 50px;
       margin-bottom: 14px;
@@ -121,368 +107,385 @@
     h2.title {
       font-size: 20px;
       font-weight: 700;
-      color: #3a0ca3;
+      color: #2b0938;
       line-height: 1.35;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
 
-    .options {
+    p.subtitle {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #495057;
+      margin-bottom: 22px;
+    }
+
+    /* Interactive Options Grid */
+    .options-grid {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 11px;
       margin-bottom: 18px;
     }
 
-    .option-btn {
+    .btn-opt {
       width: 100%;
       background: #ffffff;
-      border: 2px solid #ecd6ff;
+      border: 2px solid #e9d5ff;
       border-radius: 20px;
       padding: 15px 18px;
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 600;
-      color: #4a4e69;
+      color: #343a40;
       cursor: pointer;
       text-align: left;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
-      transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
       display: flex;
       justify-content: space-between;
       align-items: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
     }
 
-    .option-btn:hover {
+    .btn-opt:hover {
       transform: translateY(-2px);
-      border-color: #c77dff;
+      border-color: var(--kitty-pink);
     }
 
-    .option-btn.selected {
-      background: linear-gradient(135deg, #ff70a6, #c77dff);
+    .btn-opt.selected {
+      background: linear-gradient(135deg, var(--kitty-pink), var(--lavender-deep));
       color: white;
       border-color: transparent;
-      box-shadow: 0 8px 20px rgba(255, 112, 166, 0.35);
+      box-shadow: 0 8px 24px rgba(255, 107, 139, 0.35);
     }
 
-    .glow-btn {
+    .action-btn {
       width: 100%;
-      background: linear-gradient(135deg, #ff5376, #9d4edd);
+      background: linear-gradient(135deg, var(--kitty-pink), var(--lavender-deep));
       color: white;
       border: none;
-      border-radius: 20px;
+      border-radius: 22px;
       padding: 16px;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
       cursor: pointer;
-      box-shadow: 0 10px 25px rgba(255, 83, 118, 0.35);
+      box-shadow: 0 10px 25px rgba(255, 107, 139, 0.35);
       transition: all 0.2s ease;
       margin-top: 8px;
     }
-
-    .glow-btn:hover {
+    .action-btn:hover {
       transform: scale(1.02);
+      box-shadow: 0 12px 30px rgba(255, 107, 139, 0.5);
+    }
+
+    /* Anywhere Door Minigame */
+    .anywhere-door {
+      width: 110px;
+      height: 160px;
+      background: #ff4d6d;
+      border: 4px solid #c9184a;
+      border-radius: 12px;
+      margin: 18px auto;
+      position: relative;
+      cursor: pointer;
+      box-shadow: 0 15px 30px rgba(201, 24, 74, 0.35);
+      transform-style: preserve-3d;
+      transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .door-knob {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      width: 16px;
+      height: 16px;
+      background: #ffd166;
+      border-radius: 50%;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
 
     /* Photo Frame */
-    .cute-frame {
+    .photo-card {
       background: white;
       padding: 12px 12px 18px;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(157, 78, 221, 0.15);
+      border-radius: 24px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.12);
       margin-bottom: 16px;
-      border: 2px dashed #f272a1;
+      border: 2px dashed var(--kitty-pink);
     }
-
-    .cute-frame img {
+    .photo-card img {
       width: 100%;
       height: 250px;
       object-fit: cover;
-      border-radius: 14px;
+      border-radius: 18px;
       display: block;
     }
-
     .caption {
-      margin-top: 10px;
-      font-size: 14px;
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
       font-weight: 600;
-      color: #6a0dad;
+      color: var(--lavender-deep);
+      margin-top: 12px;
     }
 
-    .gift-box {
-      font-size: 80px;
-      cursor: pointer;
-      display: inline-block;
-      margin: 18px 0;
-      animation: pulseBow 1.6s infinite ease-in-out;
-      filter: drop-shadow(0 10px 20px rgba(255, 112, 166, 0.3));
+    /* Coupon Book */
+    .coupon {
+      background: #fff;
+      border: 2px dashed var(--kitty-pink);
+      border-radius: 16px;
+      padding: 14px;
+      margin-bottom: 10px;
+      text-align: left;
+    }
+    .coupon h4 { color: var(--kitty-pink); font-size: 14px; margin-bottom: 4px; }
+    .coupon p { font-size: 12px; color: #666; }
+
+    .fade-switch {
+      animation: stageFade 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
-    @keyframes pulseBow {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.15) rotate(4deg); }
-    }
-
-    .fade-anim {
-      animation: fadeIn 0.35s ease forwards;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px) scale(0.98); }
+    @keyframes stageFade {
+      from { opacity: 0; transform: translateY(14px) scale(0.97); }
       to { opacity: 1; transform: translateY(0) scale(1); }
     }
   </style>
 </head>
 <body>
 
-  <div class="sticker-layer">
-    <div class="sticker" style="top: 8%; left: 8%;">🎀</div>
-    <div class="sticker" style="top: 15%; right: 10%; animation-delay: -2s;">🧚‍♀️</div>
-    <div class="sticker" style="top: 45%; left: 4%; animation-delay: -4s;">🐞</div>
-    <div class="sticker" style="bottom: 14%; left: 10%; animation-delay: -1s;">✨</div>
-    <div class="sticker" style="bottom: 20%; right: 8%; animation-delay: -3s;">🐱</div>
-    <div class="sticker" style="top: 75%; right: 12%; animation-delay: -5s;">🌸</div>
+  <div class="stickers-board">
+    <div class="charm" style="top: 8%; left: 8%;">🎀</div>
+    <div class="charm" style="top: 16%; right: 10%; animation-delay: -2s;">🧚‍♀️</div>
+    <div class="charm" style="top: 45%; left: 6%; animation-delay: -4s;">🐞</div>
+    <div class="charm" style="top: 65%; right: 8%; animation-delay: -1s;">⚡</div>
+    <div class="charm" style="bottom: 12%; left: 10%; animation-delay: -3s;">🍳</div>
+    <div class="charm" style="bottom: 20%; right: 12%; animation-delay: -5s;">☀️</div>
   </div>
 
-  <div class="viewport">
-    <div class="cute-card">
-      <div id="dynamic-content" class="fade-anim"></div>
+  <div class="container">
+    <div class="main-card" id="card-box">
+      <div id="screen" class="fade-switch"></div>
     </div>
   </div>
 
   <script>
-    // Audio engine for pops & fanfare
-    const AudioEngine = {
+    // Audio synthesizer for cute SFX
+    const AudioPlay = {
       ctx: null,
       init() {
         if (!this.ctx) this.ctx = new (window.AudioContext || window.webkitAudioContext)();
       },
-      pop() {
+      beep(f, type="sine", dur=0.08) {
         this.init();
-        const osc = this.ctx.createOscillator();
-        const gain = this.ctx.createGain();
-        osc.type = "sine";
-        osc.frequency.setValueAtTime(500, this.ctx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(900, this.ctx.currentTime + 0.08);
-        gain.gain.setValueAtTime(0.2, this.ctx.currentTime);
-        gain.gain.linearRampToValueAtTime(0.01, this.ctx.currentTime + 0.08);
-        osc.connect(gain);
-        gain.connect(this.ctx.destination);
-        osc.start();
-        osc.stop(this.ctx.currentTime + 0.08);
+        const o = this.ctx.createOscillator();
+        const g = this.ctx.createGain();
+        o.type = type;
+        o.frequency.setValueAtTime(f, this.ctx.currentTime);
+        g.gain.setValueAtTime(0.2, this.ctx.currentTime);
+        g.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + dur);
+        o.connect(g);
+        g.connect(this.ctx.destination);
+        o.start();
+        o.stop(this.ctx.currentTime + dur);
+      },
+      click() { this.beep(600, "sine", 0.06); },
+      chime() {
+        [523.25, 659.25, 783.99, 1046.50].forEach((freq, i) => {
+          setTimeout(() => this.beep(freq, "triangle", 0.35), i * 90);
+        });
       },
       fanfare() {
-        this.init();
-        [523, 659, 783, 1046].forEach((f, i) => {
-          const osc = this.ctx.createOscillator();
-          const gain = this.ctx.createGain();
-          osc.type = "triangle";
-          osc.frequency.setValueAtTime(f, this.ctx.currentTime + i * 0.1);
-          gain.gain.setValueAtTime(0.25, this.ctx.currentTime + i * 0.1);
-          gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + i * 0.1 + 0.5);
-          osc.connect(gain);
-          gain.connect(this.ctx.destination);
-          osc.start(this.ctx.currentTime + i * 0.1);
-          osc.stop(this.ctx.currentTime + i * 0.1 + 0.5);
+        [440, 554, 659, 880, 1108].forEach((freq, i) => {
+          setTimeout(() => this.beep(freq, "sine", 0.4), i * 110);
         });
       }
     };
 
-    // 5 Theme-Infused Questions
-    const questions = [
-      {
-        tag: "Winx Magic Check 🧚‍♀️",
-        icons: "🎀 🌸 ✨",
-        title: "If we were in the Winx Club, what kind of fairy are you?",
-        options: [
-          "Fairy of endless gossiping 💅",
-          "Fairy of causing chaos 24/7 🌪️",
-          "Fairy of sleeping 12 hours 😴",
-          "Stella's twin (high maintenance) 👑"
-        ]
-      },
-      {
-        tag: "Miraculous Alert 🐞",
-        icons: "🐞 🐱 🖤",
-        title: "Hawk Moth sends an Akuma at you... what triggered it?",
-        options: [
-          "I didn't share my fries with you 🍟",
-          "You lost an argument to me 🗣️",
-          "Someone woke you up early ⏰",
-          "Wi-Fi stopped working for 2 seconds 📶"
-        ]
-      },
-      {
-        tag: "Hello Kitty Sanrio Trial 🎀",
-        icons: "🎀 🐱 🍰",
-        title: "Which Sanrio personality matches you best?",
-        options: [
-          "Hello Kitty (Cute & bossy) 🎀",
-          "Kuromi (Spicy menace) 😈",
-          "My Melody (Living in dreamland) 🌸",
-          "Cinnamoroll (Soft and sleepy) ☁️"
-        ]
-      },
-      {
-        tag: "The Fight Policy 🥊",
-        icons: "🥊 🧁 💖",
-        title: "Since we fight in every single episode, what’s the fix?",
-        options: [
-          "You say 'You were right' 5 times 😇",
-          "Buy me iced coffee & dessert 🧋",
-          "We never stop, it's our signature brand 💅",
-          "Call Cat Noir to save us 🐾"
-        ]
-      },
-      {
-        tag: "The Legal Age Ceremony 🪪",
-        icons: "🎂 🥂 🪄",
-        title: "What is your main goal now that you're officially 18?",
-        options: [
-          "Develop 200g of extra brain power 🧠",
-          "Use your Miraculous to pass exams 🪄",
-          "Treat me to lunch with adult money 💳",
-          "Still act like a toddler 🍼"
-        ]
+    let step = 0;
+    const screen = document.getElementById("screen");
+
+    function renderStage() {
+      screen.className = "fade-switch";
+
+      // 1. POKÉMON BATTLE
+      if (step === 0) {
+        document.body.className = "";
+        screen.innerHTML = `
+          <div class="badge" style="background:#fee2e2; color:#ef4444;">Pokémon Route 18 ⚡</div>
+          <h2 class="title">A wild 18-Year-Old appeared!</h2>
+          <p class="subtitle">She looks ready to argue and hasn't eaten since 2 PM. What is your strategy?</p>
+          <div class="options-grid">
+            <button class="btn-opt" onclick="selectOpt(this)"><span>FIGHT: Argue back until 3:00 AM 🥊</span></button>
+            <button class="btn-opt" onclick="selectOpt(this)"><span>BRIBE: Hand over iced coffee & cake 🎂</span></button>
+            <button class="btn-opt" onclick="selectOpt(this)"><span>RUN: Flee for your life 🏃</span></button>
+            <button class="btn-opt" onclick="selectOpt(this)"><span>POKÉBALL: Trap her in childhood forever 🪄</span></button>
+          </div>
+          <button class="action-btn" id="next-btn" style="display:none;" onclick="nextStep()">Continue Quest ➔</button>
+        `;
       }
-    ];
 
-    const memories = [
-      {
-        tag: "Iconic Throwback 📸",
-        img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=700",
-        caption: "A true cinematic masterpiece. Never forget this look!"
-      },
-      {
-        tag: "A Special Bouquet 💐",
-        img: "https://images.unsplash.com/photo-1561181286-d3fee7d55364?w=700",
-        caption: "Magical Enchantix flowers that will never wither! 🌸"
+      // 2. DORAEMON ANYWHERE DOOR
+      else if (step === 1) {
+        screen.innerHTML = `
+          <div class="badge" style="background:#e0f2fe; color:#0284c7;">22nd Century Gadget 🚪</div>
+          <h2 class="title">Doraemon's Anywhere Door</h2>
+          <p class="subtitle">Tap the pink door to find out where your mental age is actually located right now...</p>
+          <div class="anywhere-door" onclick="openDoor(this)">
+            <div class="door-knob"></div>
+          </div>
+          <p id="door-text" style="font-size:13px; font-weight:700; color:#c9184a;">TAP THE DOOR TO ENTER ✨</p>
+        `;
       }
-    ];
 
-    let currentStep = 0;
-    let memoryIdx = 0;
-    const stage = document.getElementById("dynamic-content");
+      // 3. SHINCHAN ROAST
+      else if (step === 2) {
+        screen.innerHTML = `
+          <div class="badge" style="background:#fef3c7; color:#d97706;">Action Kamen Network 🐶</div>
+          <h2 class="title">Shinchan's Legal Evaluation</h2>
+          <p class="subtitle">Shinchan looked at your birth certificate and asked: "If you're 18 now, why do you still act 4?"</p>
+          <div class="options-grid">
+            <button class="btn-opt" onclick="selectOpt(this)"><span>Because adulting is an elaborate scam 🫑</span></button>
+            <button class="btn-opt" onclick="selectOpt(this)"><span>My brain is on power-saving mode 🔋</span></button>
+            <button class="btn-opt" onclick="selectOpt(this)"><span>Ask my best friend, they cause all my tantrums 😇</span></button>
+            <button class="btn-opt" onclick="selectOpt(this)"><span>*Wiggles eyebrows like Shinchan* 🕺</span></button>
+          </div>
+          <button class="action-btn" id="next-btn" style="display:none;" onclick="nextStep()">Defend Yourself ➔</button>
+        `;
+      }
 
-    function updateDots(activeIdx, total) {
-      return `
-        <div class="stepper">
-          ${Array.from({ length: total }, (_, i) => `
-            <div class="dot ${i === activeIdx ? 'active' : ''}"></div>
-          `).join('')}
-        </div>
-      `;
+      // 4. MIRACULOUS LUCKY CHARM
+      else if (step === 3) {
+        screen.innerHTML = `
+          <div class="badge" style="background:#ffe4e6; color:#e11d48;">Parisian Crisis 🐞</div>
+          <h2 class="title">Lucky Charm Summoned!</h2>
+          <p class="subtitle">Hawk Moth sent an Akuma because you turned 18. Tikki dropped this item to protect you:</p>
+          <div style="font-size:75px; margin: 12px 0;" onclick="AudioPlay.click()">🍳</div>
+          <p style="font-size:14px; font-weight:700; color:#be123c; margin-bottom:18px;">A Cast-Iron Tangled Frying Pan!</p>
+          <div class="options-grid">
+            <button class="btn-opt" onclick="selectOpt(this)"><span>Smack adult responsibilities far away 🚀</span></button>
+            <button class="btn-opt" onclick="selectOpt(this)"><span>Use it to fry eggs because I'm hungry 🍳</span></button>
+            <button class="btn-opt" onclick="selectOpt(this)"><span>Threaten my best friend whenever we disagree 👑</span></button>
+          </div>
+          <button class="action-btn" id="next-btn" style="display:none;" onclick="nextStep()">Charge Ahead ➔</button>
+        `;
+      }
+
+      // 5. TANGLED LANTERN NIGHT (THE EMOTIONAL CLIMAX)
+      else if (step === 4) {
+        document.body.className = "tangled-night";
+        launchLanterns();
+        AudioPlay.chime();
+        screen.innerHTML = `
+          <div class="badge" style="background:rgba(255,190,11,0.2); color:#ffbe0b;">Kingdom of Corona ☀️</div>
+          <h2 class="title" style="color:#ffbe0b;">At Last You See The Light</h2>
+          <p class="subtitle" style="color:#e9d5ff;">Rapunzel left the tower at 18, and look at you—you survived childhood. Touch the glowing lantern below to ignite your sky.</p>
+          <div style="font-size:78px; cursor:pointer; margin: 14px 0; filter:drop-shadow(0 0 20px #ffbe0b);" onclick="igniteSky()">🏮</div>
+          <p style="font-size:13px; color:#fde047; font-weight:700;">TAP THE LANTERN TO ILLUMINATE ✨</p>
+        `;
+      }
+
+      // 6. WINX ENCHANTIX & THE LETTER
+      else if (step === 5) {
+        document.body.className = "";
+        AudioPlay.fanfare();
+        confetti({ particleCount: 100, spread: 80, origin: { y: 0.6 } });
+        screen.innerHTML = `
+          <div class="badge" style="background:#f3e8ff; color:#7e22ce;">Enchantix Complete 🧚‍♀️</div>
+          <h2 class="title" style="color:#ff0054; font-size:24px;">Happy 18th Birthday! 👑💖</h2>
+          <div style="text-align:left; font-size:14px; line-height:1.8; color:#3d344d; margin-bottom:20px; background:rgba(255,255,255,0.7); padding:16px; border-radius:18px;">
+            Dear you,<br><br>
+            You are officially 18. No more excuses for your toddler behavior (though let’s be honest, you won't change, and I wouldn't want you to).<br><br>
+            Through all the random bickering, 2 AM life rants, inside jokes nobody else understands, and everyday drama—you have been my absolute favorite person to navigate life with. I hope this year brings you all the freedom you dreamed of, zero Akumas, and all the happiness in the universe.<br><br>
+            Always in your corner. Happy 18th, you menace! 🎀
+          </div>
+          <button class="action-btn" onclick="nextStep()">Claim Your VIP Perks 🎁</button>
+        `;
+      }
+
+      // 7. BEST-FRIEND COUPON BOOK & MEMORY VAULT
+      else if (step === 6) {
+        AudioPlay.chime();
+        screen.innerHTML = `
+          <div class="badge" style="background:#fee2e2; color:#ef4444;">Exclusive 18th Privileges 🎟️</div>
+          <h2 class="title">Your Birthday Coupons</h2>
+          <p class="subtitle">Valid for life. Screenshot to redeem whenever you want:</p>
+          
+          <div class="coupon">
+            <h4>🍰 The "You Were Right" Free Pass</h4>
+            <p>Redeem this during any argument, and I have to formally admit you won.</p>
+          </div>
+          <div class="coupon">
+            <h4>🧋 Emergency Iced Coffee / Snack Treaty</h4>
+            <p>I buy you your comfort snack with no questions asked.</p>
+          </div>
+          <div class="coupon">
+            <h4>📞 3:00 AM Rant Hotline</h4>
+            <p>Guaranteed listening time for any drama, breakdowns, or nonsense.</p>
+          </div>
+
+          <div class="photo-card" style="margin-top:16px;">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=700" alt="Memory" />
+            <div class="caption">"Here's to the girl who brings the magic everywhere." ✨</div>
+          </div>
+
+          <button class="action-btn" style="background:#fff; color:var(--lavender-deep); border:2px solid var(--lavender-deep);" onclick="location.reload()">Replay The Journey ↺</button>
+        `;
+      }
     }
 
-    function renderQuestion() {
-      const cur = questions[currentStep];
-      stage.className = "fade-anim";
-      stage.innerHTML = `
-        ${updateDots(currentStep, questions.length + 2)}
-        <div class="header-icons">${cur.icons}</div>
-        <div class="badge">${cur.tag}</div>
-        <h2 class="title">${cur.title}</h2>
-        <div class="options">
-          ${cur.options.map(opt => `
-            <button class="option-btn" onclick="selectOption(this)">
-              <span>${opt}</span>
-              <span style="opacity:0.4;">✦</span>
-            </button>
-          `).join('')}
-        </div>
-        <button class="glow-btn" id="next-btn" style="display:none;" onclick="nextQuestion()">
-          Next Magic Trial ➔
-        </button>
-      `;
-    }
-
-    function selectOption(btn) {
-      AudioEngine.pop();
-      document.querySelectorAll(".option-btn").forEach(b => b.classList.remove("selected"));
+    function selectOpt(btn) {
+      AudioPlay.click();
+      document.querySelectorAll(".btn-opt").forEach(b => b.classList.remove("selected"));
       btn.classList.add("selected");
-      const nextBtn = document.getElementById("next-btn");
-      nextBtn.style.display = "block";
-      nextBtn.classList.add("fade-anim");
-    }
-
-    function nextQuestion() {
-      AudioEngine.pop();
-      currentStep++;
-      if (currentStep < questions.length) {
-        renderQuestion();
-      } else {
-        renderGiftBox();
+      const n = document.getElementById("next-btn");
+      if (n) {
+        n.style.display = "block";
+        n.classList.add("fade-switch");
       }
     }
 
-    function renderGiftBox() {
-      AudioEngine.fanfare();
-      confetti({ particleCount: 70, spread: 70, origin: { y: 0.6 } });
-      stage.className = "fade-anim";
-      stage.innerHTML = `
-        ${updateDots(questions.length, questions.length + 2)}
-        <div class="header-icons">🎀 🐞 🧚‍♀️</div>
-        <div class="badge">Clearance Passed!</div>
-        <h2 class="title">Tikki, Spots On! Tap The Bow!</h2>
-        <p style="font-size: 14px; color: #6a0dad; margin-bottom: 8px;">Tap the Hello Kitty vault to reveal your wish</p>
-        <div class="gift-box" onclick="openBox()">🎁</div>
-        <p style="font-size: 12px; color: #b5179e; font-weight:700;">TAP TO UNLOCK ✨</p>
-      `;
+    function nextStep() {
+      AudioPlay.click();
+      step++;
+      renderStage();
     }
 
-    function openBox() {
-      AudioEngine.fanfare();
-      // Multi-burst confetti
-      const end = Date.now() + 2000;
-      (function frame() {
-        confetti({ particleCount: 6, angle: 60, spread: 55, origin: { x: 0 }, colors: ['#ff70a6', '#c77dff', '#ff3366'] });
-        confetti({ particleCount: 6, angle: 120, spread: 55, origin: { x: 1 }, colors: ['#ff70a6', '#c77dff', '#ff3366'] });
-        if (Date.now() < end) requestAnimationFrame(frame);
-      })();
-
-      renderLetter();
+    function openDoor(el) {
+      AudioPlay.chime();
+      el.style.transform = "perspective(600px) rotateY(-80deg)";
+      document.getElementById("door-text").innerText = "Destination: Kindergarten Classroom 🍼";
+      confetti({ particleCount: 40, spread: 60, origin: { y: 0.6 } });
+      setTimeout(() => nextStep(), 1300);
     }
 
-    function renderLetter() {
-      stage.className = "fade-anim";
-      stage.innerHTML = `
-        ${updateDots(questions.length + 1, questions.length + 2)}
-        <div class="header-icons">🌸 🎂 🧚‍♀️</div>
-        <div class="badge" style="background:#ffd1dc; color:#d90429; border-color:#d90429;">Official 18th Wish</div>
-        <h2 class="title" style="color: #ff3366; font-size: 24px;">Happy 18th Birthday! 💖</h2>
-        <div style="text-align: left; font-size: 14px; line-height: 1.8; color: #4a4e69; margin-bottom: 20px;">
-          So you're finally 18! Praying to the Winx fairies that you gain at least 500g of extra brain power so you can finally be as smart as me. 😎<br><br>
-          We might argue like Ladybug and Cat Noir 24/7, but honestly, thanks for tolerating me and always sticking around. Have the sweetest day, you menace! 🎀
-        </div>
-        <button class="glow-btn" onclick="renderMemories()">
-          Open The Cute Gallery 📸
-        </button>
-      `;
+    function launchLanterns() {
+      for (let i = 0; i < 18; i++) {
+        const l = document.createElement("div");
+        l.className = "lantern";
+        l.style.left = `${Math.random() * 90}%`;
+        l.style.bottom = "-50px";
+        document.body.appendChild(l);
+
+        const dur = Math.random() * 5 + 6;
+        const delay = Math.random() * 3;
+
+        l.animate([
+          { transform: `translateY(0) scale(${Math.random() * 0.5 + 0.6})`, opacity: 0 },
+          { opacity: 0.8, offset: 0.2 },
+          { opacity: 0.8, offset: 0.8 },
+          { transform: `translateY(-110vh) scale(1.1)`, opacity: 0 }
+        ], {
+          duration: dur * 1000,
+          delay: delay * 1000,
+          iterations: Infinity
+        });
+      }
     }
 
-    function renderMemories() {
-      AudioEngine.pop();
-      const item = memories[memoryIdx];
-      stage.className = "fade-anim";
-      stage.innerHTML = `
-        ${updateDots(questions.length + 1, questions.length + 2)}
-        <div class="badge">${item.tag}</div>
-        <div class="cute-frame">
-          <img src="${item.img}" alt="Memory" />
-          <div class="caption">${item.caption}</div>
-        </div>
-        ${
-          memoryIdx < memories.length - 1
-            ? `<button class="glow-btn" onclick="nextMemory()">Next Picture ➔</button>`
-            : `<button class="glow-btn" style="background: white; color: #9d4edd; border: 2px solid #9d4edd; box-shadow:none;" onclick="location.reload()">Replay Magic ↺</button>`
-        }
-      `;
+    function igniteSky() {
+      AudioPlay.fanfare();
+      confetti({ particleCount: 120, spread: 100, origin: { y: 0.5 }, colors: ['#ffbe0b', '#ffd166', '#ffffff'] });
+      setTimeout(() => nextStep(), 1000);
     }
 
-    function nextMemory() {
-      memoryIdx++;
-      renderMemories();
-    }
-
-    renderQuestion();
+    // Launch
+    renderStage();
   </script>
 </body>
 </html>
