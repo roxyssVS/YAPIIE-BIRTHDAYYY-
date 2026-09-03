@@ -5,42 +5,89 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Veronicaa Persis // The 18th Multiverse Odyssey ✨🎀</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600;1,800;1,900&family=Quicksand:wght@600;700&display=swap');
-
+    /* ==========================================================================
+       SECTION 1: DESIGN TOKENS & ROOT SYSTEM VARIABLES
+       ========================================================================== */
     :root {
-      --lavender-bg: #f3e8ff;
-      --lavender-deep: #6b21a8;
-      --kitty-pink: #ff4d6d;
-      --shinchan-red: #e11d48;
-      --tangled-gold: #ffbe0b;
-      --card-bg: rgba(255, 255, 255, 0.95);
+      --lavender-100: #faf5ff;
+      --lavender-200: #f3e8ff;
+      --lavender-300: #e9d5ff;
+      --lavender-400: #d8b4fe;
+      --lavender-500: #c084fc;
+      --lavender-600: #a855f7;
+      --lavender-700: #9333ea;
+      --lavender-800: #7e22ce;
+      --lavender-900: #581c87;
+      --pink-100: #ffe4e6;
+      --pink-200: #fecdd3;
+      --pink-300: #fda4af;
+      --pink-400: #fb7185;
+      --pink-500: #f43f5e;
+      --pink-600: #e11d48;
+      --pink-700: #be123c;
+      --gold-100: #fef9c3;
+      --gold-200: #fef08a;
+      --gold-300: #fde047;
+      --gold-400: #facc15;
+      --gold-500: #eab308;
+      --gold-600: #ca8a04;
+      --gold-700: #a16207;
+      --gold-glow: #ffbe0b;
+      --bg-dark-top: #1e1035;
+      --bg-dark-mid: #0c071e;
+      --bg-dark-bottom: #030014;
+      --card-bg-light: rgba(255, 255, 255, 0.94);
+      --card-bg-dark: rgba(18, 10, 35, 0.88);
+      --card-border-light: rgba(255, 255, 255, 0.98);
+      --card-border-dark: rgba(255, 190, 11, 0.4);
       --text-main: #1f2937;
       --text-muted: #4b5563;
-      --border-soft: rgba(255, 255, 255, 0.9);
+      --text-light: #f3f4f6;
+      --text-lavender: #e9d5ff;
+      --shadow-ambient: rgba(107, 33, 168, 0.22);
+      --shadow-active: rgba(255, 77, 109, 0.35);
+      --radius-sm: 12px;
+      --radius-md: 20px;
+      --radius-lg: 28px;
+      --radius-xl: 40px;
+      --radius-full: 9999px;
+      --transition-fast: 0.15s ease;
+      --transition-normal: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    * {
+    /* ==========================================================================
+       SECTION 2: GLOBAL RESETS & FOUNDATION
+       ========================================================================== */
+    *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Fredoka', 'Quicksand', sans-serif;
       -webkit-tap-highlight-color: transparent;
       user-select: none;
     }
 
-    body {
-      background: radial-gradient(circle at 50% 20%, #e9d5ff 0%, #c4b5fd 45%, #ffd1dc 90%);
+    html, body {
+      width: 100%;
       min-height: 100vh;
       overflow-x: hidden;
+    }
+
+    body {
+      background: radial-gradient(circle at 50% 20%, var(--lavender-300) 0%, var(--lavender-400) 45%, #ffd1dc 90%);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 24px 16px;
-      transition: background 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+      color: var(--text-main);
       position: relative;
+      transition: background 1.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    /* Ambient Floating Stickers */
+    /* ==========================================================================
+       SECTION 3: AMBIENT DECORATIONS & BACKGROUND ENGINES
+       ========================================================================== */
     .stickers-board {
       position: fixed;
       inset: 0;
@@ -53,15 +100,21 @@
       position: absolute;
       font-size: 32px;
       opacity: 0.8;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.08));
       animation: floatCharm 6s infinite ease-in-out alternate;
     }
+
+    .charm-1 { top: 6%; left: 6%; animation-duration: 5.5s; }
+    .charm-2 { top: 14%; right: 8%; animation-duration: 6.8s; animation-delay: -2s; }
+    .charm-3 { top: 48%; left: 4%; animation-duration: 7.2s; animation-delay: -3.5s; }
+    .charm-4 { top: 70%; right: 6%; animation-duration: 6.2s; animation-delay: -1.5s; }
+    .charm-5 { bottom: 8%; left: 8%; animation-duration: 5.8s; animation-delay: -4s; }
 
     @keyframes floatCharm {
       0% { transform: translateY(0px) rotate(0deg) scale(1); }
       100% { transform: translateY(-30px) rotate(16deg) scale(1.15); }
     }
 
-    /* Fullscreen Tangled Canvas */
     #lantern-canvas {
       position: fixed;
       top: 0;
@@ -74,7 +127,9 @@
       transition: opacity 1.8s ease;
     }
 
-    /* Full Width Viewport Container */
+    /* ==========================================================================
+       SECTION 4: CORE CARD & STRUCTURAL SCAFFOLDING
+       ========================================================================== */
     .viewport {
       position: relative;
       z-index: 10;
@@ -83,20 +138,20 @@
     }
 
     .grand-card {
-      background: var(--card-bg);
+      background: var(--card-bg-light);
       backdrop-filter: blur(28px);
       -webkit-backdrop-filter: blur(28px);
-      border: 4px solid var(--border-soft);
-      border-radius: 40px;
+      border: 4px solid var(--card-border-light);
+      border-radius: var(--radius-xl);
       padding: 40px 30px;
       min-height: 560px;
-      box-shadow: 0 35px 80px rgba(107, 33, 168, 0.22);
+      box-shadow: 0 35px 80px var(--shadow-ambient);
       text-align: center;
       display: flex;
       flex-direction: column;
       justify-content: center;
       position: relative;
-      transition: all 0.6s ease;
+      transition: all var(--transition-slow);
     }
 
     .badge-pill {
@@ -109,7 +164,7 @@
       letter-spacing: 1.5px;
       text-transform: uppercase;
       padding: 7px 20px;
-      border-radius: 50px;
+      border-radius: var(--radius-full);
       margin-bottom: 16px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
     }
@@ -133,11 +188,13 @@
       margin-right: auto;
     }
 
-    /* ================= ACT 1: POKÉMON BATTLE ARENA ================= */
+    /* ==========================================================================
+       SECTION 5: POKEMON BATTLE ENGINE STYLES
+       ========================================================================== */
     .battle-arena {
       background: linear-gradient(180deg, #dcfce7 0%, #bbf7d0 100%);
       border: 3px solid #86efac;
-      border-radius: 28px;
+      border-radius: var(--radius-lg);
       padding: 22px 18px;
       margin-bottom: 22px;
       position: relative;
@@ -221,7 +278,9 @@
       transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    /* Option Grid */
+    /* ==========================================================================
+       SECTION 6: INTERACTIVE CONTROLS & COMMAND MATRICES
+       ========================================================================== */
     .options-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -229,24 +288,17 @@
       margin-bottom: 16px;
     }
 
-    @media (max-width: 580px) {
-      .options-grid { grid-template-columns: 1fr; }
-      .sprite-wrap { width: 95px; height: 95px; }
-      .hp-box { width: 130px; }
-      .arena-grid { gap: 6px; }
-    }
-
     .btn-command {
       background: #ffffff;
       border: 2.5px solid #ecd6ff;
-      border-radius: 20px;
+      border-radius: var(--radius-md);
       padding: 16px 18px;
       font-size: 14px;
       font-weight: 600;
       color: #374151;
       cursor: pointer;
       text-align: left;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all var(--transition-normal);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -259,18 +311,22 @@
       background: #fff5f7;
     }
 
+    .btn-command:active {
+      transform: scale(0.98);
+    }
+
     .action-btn {
       width: 100%;
       background: linear-gradient(135deg, var(--kitty-pink), var(--lavender-deep));
       color: white;
       border: none;
-      border-radius: 24px;
+      border-radius: var(--radius-lg);
       padding: 18px;
       font-size: 16px;
       font-weight: 700;
       cursor: pointer;
-      box-shadow: 0 12px 28px rgba(255, 77, 109, 0.35);
-      transition: all 0.25s ease;
+      box-shadow: 0 12px 28px var(--shadow-active);
+      transition: all var(--transition-normal);
       margin-top: 10px;
     }
 
@@ -279,7 +335,13 @@
       box-shadow: 0 15px 35px rgba(255, 77, 109, 0.55);
     }
 
-    /* ================= ACT 2: SHINCHAN STAGE ================= */
+    .action-btn:active {
+      transform: scale(0.98);
+    }
+
+    /* ==========================================================================
+       SECTION 7: SHINCHAN & ROAST COMPONENTS
+       ========================================================================== */
     .shinchan-stage {
       width: 150px;
       height: 150px;
@@ -290,7 +352,7 @@
     .roast-card {
       background: #fff0f3;
       border: 2.5px dashed var(--kitty-pink);
-      border-radius: 22px;
+      border-radius: var(--radius-lg);
       padding: 18px 22px;
       margin: 16px 0;
       text-align: left;
@@ -302,7 +364,9 @@
       100% { transform: scale(1); opacity: 1; }
     }
 
-    /* ================= ACT 3: TANGLED STAGE ================= */
+    /* ==========================================================================
+       SECTION 8: TANGLED CORONA SCENE
+       ========================================================================== */
     .tangled-boat-wrapper {
       width: 220px;
       height: 130px;
@@ -316,21 +380,23 @@
     }
 
     .glow-quote {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Playfair Display', Georgia, serif;
       font-size: 26px;
       font-weight: 800;
       font-style: italic;
-      color: #ffbe0b;
+      color: var(--gold-glow);
       text-shadow: 0 0 25px rgba(255, 190, 11, 0.75);
       margin: 14px 0;
       display: block;
     }
 
-    /* ================= ACT 4: LETTER & CONTRACT ================= */
+    /* ==========================================================================
+       SECTION 9: FINAL CHARTER & CONTRACT STYLING
+       ========================================================================== */
     .letter-parchment {
       background: #ffffff;
       border: 3px solid #ffd1dc;
-      border-radius: 28px;
+      border-radius: var(--radius-lg);
       padding: 26px;
       text-align: left;
       margin: 20px 0;
@@ -343,7 +409,7 @@
     .contract-gold {
       background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
       border: 2.5px dashed #d97706;
-      border-radius: 22px;
+      border-radius: var(--radius-md);
       padding: 20px;
       text-align: left;
       margin-top: 18px;
@@ -365,16 +431,27 @@
       from { opacity: 0; transform: translateY(16px) scale(0.98); }
       to { opacity: 1; transform: translateY(0) scale(1); }
     }
+
+    /* Responsive adjustments */
+    @media (max-width: 580px) {
+      .options-grid { grid-template-columns: 1fr; }
+      .sprite-wrap { width: 95px; height: 95px; }
+      .hp-box { width: 130px; }
+      .arena-grid { gap: 6px; }
+      .grand-card { padding: 30px 18px; }
+      h1.hero-title { font-size: 23px; }
+      .glow-quote { font-size: 22px; }
+    }
   </style>
 </head>
 <body>
 
   <div class="stickers-board">
-    <div class="ambient-charm" style="top: 6%; left: 6%;">🎀</div>
-    <div class="ambient-charm" style="top: 14%; right: 8%; animation-delay: -2s;">⚡</div>
-    <div class="ambient-charm" style="top: 48%; left: 4%; animation-delay: -3.5s;">🕺</div>
-    <div class="ambient-charm" style="top: 70%; right: 6%; animation-delay: -1.5s;">🐞</div>
-    <div class="ambient-charm" style="bottom: 8%; left: 8%; animation-delay: -4s;">🧚‍♀️</div>
+    <div class="ambient-charm charm-1">🎀</div>
+    <div class="ambient-charm charm-2">⚡</div>
+    <div class="ambient-charm charm-3">🕺</div>
+    <div class="ambient-charm charm-4">🐞</div>
+    <div class="ambient-charm charm-5">🧚‍♀️</div>
   </div>
 
   <canvas id="lantern-canvas"></canvas>
@@ -383,7 +460,7 @@
     <div class="grand-card" id="card-shell">
 
       <div id="act1" class="act-panel active fade-anim">
-        <div class="badge-pill" style="background:#fee2e2; color:#ef4444;">ACT 1 // BATTLE COMMENCE ⚡</div>
+        <div class="badge-pill" style="background: var(--pink-100); color: var(--pink-600);">ACT 1 // BATTLE COMMENCE ⚡</div>
         <h1 class="hero-title">Trainer Veronicaa Persis!</h1>
         <p class="hero-desc">Team Rocket jumped out of nowhere to steal Pikachu! You reached for your Pokéball and summoned your companion: <b>Shorty</b>.</p>
 
@@ -414,7 +491,7 @@
             <div class="fighter-slot">
               <div class="hp-box">
                 <div class="hp-header"><span>TEAM ROCKET</span><span id="rocket-hp-label">HP 100%</span></div>
-                <div class="hp-track"><div class="hp-bar" id="rocket-hp-bar" style="width: 100%; background:#ef4444;"></div></div>
+                <div class="hp-track"><div class="hp-bar" id="rocket-hp-bar" style="width: 100%; background: var(--pink-600);"></div></div>
               </div>
               <div class="sprite-wrap" id="rocket-sprite">
                 <svg viewBox="0 0 100 100" width="100%" height="100%">
@@ -432,19 +509,19 @@
         </div>
 
         <div class="options-grid">
-          <button class="btn-command" onclick="executeMove(1)">
+          <button class="btn-command" onclick="Engine.executeMove(1)">
             <span>🍼 Shorty's High-Pitch Tantrum</span>
             <span>➔</span>
           </button>
-          <button class="btn-command" onclick="executeMove(2)">
+          <button class="btn-command" onclick="Engine.executeMove(2)">
             <span>🥊 Order Shorty to Tackle</span>
             <span>➔</span>
           </button>
-          <button class="btn-command" onclick="executeMove(3)">
+          <button class="btn-command" onclick="Engine.executeMove(3)">
             <span>🗣️ Scold Them with Veronicaa's Yap</span>
             <span>➔</span>
           </button>
-          <button class="btn-command" onclick="executeMove(4)">
+          <button class="btn-command" onclick="Engine.executeMove(4)">
             <span>✨ Use 18th Birthday Magic Spell</span>
             <span>➔</span>
           </button>
@@ -454,7 +531,7 @@
       </div>
 
       <div id="act2" class="act-panel fade-anim">
-        <div class="badge-pill" style="background:#fef3c7; color:#d97706;">ACT 2 // SHINCHAN'S INQUISITION 🐶</div>
+        <div class="badge-pill" style="background: var(--gold-100); color: var(--gold-700);">ACT 2 // SHINCHAN'S INQUISITION 🐶</div>
 
         <div class="shinchan-stage">
           <svg viewBox="0 0 120 120" width="100%" height="100%">
@@ -475,70 +552,16 @@
         <p class="hero-desc">Choose wisely. Every choice will be scrutinized by the master of mischief:</p>
 
         <div class="options-grid" style="grid-template-columns: 1fr;">
-          <button class="btn-command" onclick="handleShinchanBuzzer('Didi, you only turned 18 so you can eat two cakes at once and complain about back pain!')">
+          <button class="btn-command" onclick="Engine.handleShinchanBuzzer('Didi, you only turned 18 so you can eat two cakes at once and complain about back pain!')">
             <span>😇 To finally become mature & responsible</span>
           </button>
-          <button class="btn-command" onclick="handleShinchanBuzzer('Wrong! Nature forced you to grow up, but your mental age is still stuck on Pogo TV!')">
+          <button class="btn-command" onclick="Engine.handleShinchanBuzzer('Wrong! Nature forced you to grow up, but your mental age is still stuck on Pogo TV!')">
             <span>🌸 Because nature forced me to grow up</span>
           </button>
-          <button class="btn-command" onclick="handleShinchanBuzzer('Nice try! You already boss everyone around 24/7, turning 18 changed nothing!')">
+          <button class="btn-command" onclick="Engine.handleShinchanBuzzer('Nice try! You already boss everyone around 24/7, turning 18 changed nothing!')">
             <span>👑 So I can legally boss everyone around</span>
           </button>
-          <button class="btn-command" style="border: 2.5px solid var(--kitty-pink); background:#fff0f5;" onclick="triggerAct3()">
+          <button class="btn-command" style="border: 2.5px solid var(--kitty-pink); background:#fff0f5;" onclick="Engine.triggerAct3()">
             <span>🤷‍♀️ "I don't know / IDK" (Click Here to Escape)</span>
           </button>
         </div>
-
-        <div id="shinchan-console"></div>
-      </div>
-
-      <div id="act3" class="act-panel fade-anim">
-        <div class="badge-pill" style="background:rgba(255,190,11,0.2); color:#ffbe0b;">ACT 3 // KINGDOM OF CORONA ☀️</div>
-
-        <div class="tangled-boat-wrapper">
-          <svg viewBox="0 0 160 100" width="100%" height="100%">
-            <path d="M 10 65 C 40 90 120 90 150 65 C 158 60 145 75 125 80 C 75 88 35 84 10 65 Z" fill="#78350f" stroke="#451a03" stroke-width="3" />
-            <path d="M 90 40 Q 115 50 110 75" fill="none" stroke="#fbbf24" stroke-width="8" stroke-linecap="round" />
-            <circle cx="88" cy="36" r="9" fill="#fed7aa" />
-            <path d="M 80 45 L 98 45 L 102 70 L 76 70 Z" fill="#c084fc" />
-            <circle cx="55" cy="38" r="9" fill="#fed7aa" />
-            <path d="M 46 47 L 64 47 L 66 70 L 44 70 Z" fill="#0284c7" />
-            <rect x="68" y="48" width="14" height="18" rx="4" fill="#fef08a" stroke="#d97706" stroke-width="1.5" />
-            <circle cx="75" cy="57" r="14" fill="rgba(251, 191, 36, 0.4)" />
-          </svg>
-        </div>
-
-        <h1 class="hero-title" style="color:#ffbe0b; font-size:26px;">At Last You See The Light</h1>
-        <p class="hero-desc" style="color:#e9d5ff; font-size:15px;">
-          Flynn steers the gondola into the horizon. Rapunzel turns directly toward you, smiles, and shouts into the night:
-        </p>
-
-        <span class="glow-quote">"YAPPIE BIRTHDAY VERONICAA ANI! ✨"</span>
-
-        <p style="font-size:14px; color:#fde047; margin-top:8px;">All 18 lanterns in the Corona sky are floating for you.</p>
-
-        <div style="font-size:32px; font-weight:700; color:#ffbe0b; margin: 16px 0;" id="timer-display">30s</div>
-
-        <button class="action-btn" id="skip-act4-btn" style="background: linear-gradient(135deg, #ffbe0b, #ff4d6d); color:#1a0933; font-weight:bold;" onclick="finishTangledShow()">
-          Open Veronicaa's Birthday Letter 💖
-        </button>
-      </div>
-
-      <div id="act4" class="act-panel fade-anim">
-        <div class="badge-pill" style="background:#ffe4e6; color:#e11d48;">ACT 4 // THE TRUTH 👑💖</div>
-        <div style="font-size:52px; margin-bottom:10px;">🧚‍♀️🎀✨</div>
-        <h1 class="hero-title" style="color:#be123c; font-size:30px;">Happy 18th, Veronicaa Persis!</h1>
-
-        <div class="letter-parchment">
-          Dear Veronicaa,<br><br>
-          You are officially 18! Look around—we actually survived each other.<br><br>
-          We both know we don’t really fight that much anymore... mostly because I am busy <b>eating your brain 24/7</b>, and you somehow have the patience of a saint to still tolerate me after every single headache I give you. 🧠🍴<br><br>
-          Through all the inside jokes, the endless rants, the goofy nicknames, and every single moment—thank you for being my constant. I genuinely hope this 18th chapter brings you everything you've ever wished for under those Tangled lanterns.<br><br>
-          You are truly one of one, Veronicaa. Never change.
-        </div>
-
-        <div class="contract-gold">
-          <h4 style="color:#b45309; font-size:15px; font-weight:700;">🎟️ OFFICIAL LIFETIME CLAIM CONTRACT</h4>
-          <p style="font-size:13.5px; color:#4b5563; margin-top:6px; line-height:1.6;">
-            <b>Authorized To:</b> Veronicaa Persis<br>
-            <b>Terms:</b> Entitles you to yell at me whenever I eat your brain too much, plus 1 free iced coffee / comfort snack whenever you demand it. Legally
